@@ -1,0 +1,12 @@
+{
+  "name": "f1",
+  "version": "1.0.0",
+  "description": "A React.js client for F1DB",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "server": "json-server --watch db/f1db.json"
+  }
+}

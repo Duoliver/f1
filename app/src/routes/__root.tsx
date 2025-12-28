@@ -8,8 +8,12 @@ export const Route = createRootRoute({
 function RootComponent() {
   return (
     <React.Fragment>
-      <div>Hello "__root"!</div>
-      <Outlet />
+      <div className="flex flex-col justify-between w-full lg:w-5xl xl:w-6xl min-h-dvh mx-auto">
+        <header>F1 API Client</header>
+        <main className="flex-1">
+          <Outlet />
+        </main>
+      </div>
     </React.Fragment>
   );
 }

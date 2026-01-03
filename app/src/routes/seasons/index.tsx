@@ -6,7 +6,7 @@ export const Route = createFileRoute('/seasons/')({
 });
 
 function SeasonsPage() {
-  const { seasons } = useSeasons();
+  const { seasons } = useSeasons({ _sort: { key: 'year', order: 'DESC' } });
 
   return (
     <div className="flex flex-col items-center gap-16">

@@ -8,7 +8,7 @@ export const Route = createRootRoute({
 function RootComponent() {
   return (
     <React.Fragment>
-      <div className="flex flex-col justify-between w-full lg:w-5xl xl:w-6xl min-h-dvh mx-auto">
+      <div className="flex flex-col justify-between w-full lg:w-5xl xl:w-6xl pb-4 mx-auto">
         <header>F1 API Client</header>
         <main className="flex-1">
           <Outlet />

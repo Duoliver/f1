@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute, Link } from '@tanstack/react-router';
 import useSeasons from '../../api/hooks/useSeasons';
 
 export const Route = createFileRoute('/seasons/')({
@@ -13,9 +13,9 @@ function SeasonsPage() {
       <h1>Formula One Seasons</h1>
       <div className="grid grid-cols-1 sm:grid-cols-4 md:grid-cols-5 gap-4">
         {seasons.map(({ year }) => (
-          <h2 className="text-center" key={year}>
-            {year}
-          </h2>
+          <Link to={`/seasons/$season`} params={{ season: year }} key={year}>
+            <h2 className="text-center">{year}</h2>
+          </Link>
         ))}
       </div>
     </div>

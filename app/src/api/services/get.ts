@@ -5,7 +5,7 @@ const BASE_API_URL = 'http://localhost:3000/';
 
 export default async function get<T>(
   resource: string,
-  filter?: Filter<T> & T
+  filter?: Filter<T> & Partial<T>
 ): Promise<Array<T>> {
   const queryParams = getQueryParams(filter);
 
@@ -13,7 +13,7 @@ export default async function get<T>(
   return response.json();
 }
 
-function getQueryParams<T>(filter?: Filter<T> & T): string {
+function getQueryParams<T>(filter?: Filter<T> & Partial<T>): string {
   const params: Array<string> = [];
 
   if (!filter) {

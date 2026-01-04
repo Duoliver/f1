@@ -36,10 +36,14 @@
     padding: 0;
   }
   #root {
-    min-height: 100dvh;
+    height: 100dvh;
     font-family: var(--font-semi), Futura, sans-serif;
-    background-color: var(--color-backdrop);
+    background: url('./assets/images/2002-f1-usa-schumacher-pre-start.webp')
+      var(--color-backdrop);
+    background-size: cover;
+    background-blend-mode: multiply;
     color: var(--color-white);
+    overflow-y: scroll;
   }
   p,
   .p,

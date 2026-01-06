@@ -13,9 +13,11 @@ function SeasonsPage() {
       <h1>Formula One Seasons</h1>
       <div className="grid grid-cols-1 sm:grid-cols-4 md:grid-cols-5 gap-4">
         {seasons.map(({ year }) => (
-          <Link to={`/seasons/$season`} params={{ season: year }} key={year}>
-            <h2 className="text-center">{year}</h2>
-          </Link>
+          <h2 className="text-center" key={year}>
+            <Link to={`/seasons/$season`} params={{ season: year }}>
+              {year}
+            </Link>
+          </h2>
         ))}
       </div>
     </div>

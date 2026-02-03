@@ -3,7 +3,7 @@ import type { SeasonLinkProps } from './types';
 
 export default function SeasonLink({ year }: SeasonLinkProps) {
   return (
-    <h2 className="text-center" key={year}>
+    <h2 className="text-center">
       <Link to={`/seasons/$season`} params={{ season: year }}>
         {year}
       </Link>

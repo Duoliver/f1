@@ -8,4 +8,22 @@
       "path": "./tsconfig.node.json"
     }
   ],
+  "compilerOptions": {
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    },
+    "typeRoots": [
+      "node_modules/@types",
+      "node_modules",
+      "node_modules/@testing-library",
+      "node_modules/@testing-library/jest-dom"
+    ],
+    "types": [
+      "node",
+      "vitest/globals",
+      "jest-dom"
+    ],
+  }
 }

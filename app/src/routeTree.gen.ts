@@ -10,32 +10,42 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SeasonsIndexRouteImport } from './routes/seasons/index'
+import { Route as SeasonsSeasonRouteImport } from './routes/seasons/$season'
 
 const SeasonsIndexRoute = SeasonsIndexRouteImport.update({
   id: '/seasons/',
   path: '/seasons/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SeasonsSeasonRoute = SeasonsSeasonRouteImport.update({
+  id: '/seasons/$season',
+  path: '/seasons/$season',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
+  '/seasons/$season': typeof SeasonsSeasonRoute
   '/seasons': typeof SeasonsIndexRoute
 }
 export interface FileRoutesByTo {
+  '/seasons/$season': typeof SeasonsSeasonRoute
   '/seasons': typeof SeasonsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
+  '/seasons/$season': typeof SeasonsSeasonRoute
   '/seasons/': typeof SeasonsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/seasons'
+  fullPaths: '/seasons/$season' | '/seasons'
   fileRoutesByTo: FileRoutesByTo
-  to: '/seasons'
-  id: '__root__' | '/seasons/'
+  to: '/seasons/$season' | '/seasons'
+  id: '__root__' | '/seasons/$season' | '/seasons/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
+  SeasonsSeasonRoute: typeof SeasonsSeasonRoute
   SeasonsIndexRoute: typeof SeasonsIndexRoute
 }
 
@@ -48,10 +58,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SeasonsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/seasons/$season': {
+      id: '/seasons/$season'
+      path: '/seasons/$season'
+      fullPath: '/seasons/$season'
+      preLoaderRoute: typeof SeasonsSeasonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
+  SeasonsSeasonRoute: SeasonsSeasonRoute,
   SeasonsIndexRoute: SeasonsIndexRoute,
 }
 export const routeTree = rootRouteImport

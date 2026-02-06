@@ -42,6 +42,7 @@
       var(--color-backdrop);
     background-size: cover;
     background-blend-mode: multiply;
+    background-position: center;
     color: var(--color-white);
     overflow-y: scroll;
   }

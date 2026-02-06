@@ -51,7 +51,6 @@ function renderWithFileRoutes({
     }),
     context: {
       ...routerContext,
-      // queryClient: routerContext?.queryClient ?? generateQueryClient(),
     },
   });
 

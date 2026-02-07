@@ -6,7 +6,7 @@ export default function PageLayout({ title, children }: PageLayoutProps) {
 
   return (
     <>
-      <div className="flex flex-col items-center gap-16">
+      <div className="flex flex-col items-center gap-8">
         <h1 className="text-center">{title}</h1>
         {children}
       </div>

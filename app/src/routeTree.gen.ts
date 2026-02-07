@@ -9,9 +9,15 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as IndexRouteImport } from './routes/index'
 import { Route as SeasonsIndexRouteImport } from './routes/seasons/index'
 import { Route as SeasonsSeasonRouteImport } from './routes/seasons/$season'
 
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SeasonsIndexRoute = SeasonsIndexRouteImport.update({
   id: '/seasons/',
   path: '/seasons/',
@@ -24,33 +30,44 @@ const SeasonsSeasonRoute = SeasonsSeasonRouteImport.update({
 } as any)
 
 export interface FileRoutesByFullPath {
+  '/': typeof IndexRoute
   '/seasons/$season': typeof SeasonsSeasonRoute
   '/seasons': typeof SeasonsIndexRoute
 }
 export interface FileRoutesByTo {
+  '/': typeof IndexRoute
   '/seasons/$season': typeof SeasonsSeasonRoute
   '/seasons': typeof SeasonsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
+  '/': typeof IndexRoute
   '/seasons/$season': typeof SeasonsSeasonRoute
   '/seasons/': typeof SeasonsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/seasons/$season' | '/seasons'
+  fullPaths: '/' | '/seasons/$season' | '/seasons'
   fileRoutesByTo: FileRoutesByTo
-  to: '/seasons/$season' | '/seasons'
-  id: '__root__' | '/seasons/$season' | '/seasons/'
+  to: '/' | '/seasons/$season' | '/seasons'
+  id: '__root__' | '/' | '/seasons/$season' | '/seasons/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
+  IndexRoute: typeof IndexRoute
   SeasonsSeasonRoute: typeof SeasonsSeasonRoute
   SeasonsIndexRoute: typeof SeasonsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/seasons/': {
       id: '/seasons/'
       path: '/seasons'
@@ -69,6 +86,7 @@ declare module '@tanstack/react-router' {
 }
 
 const rootRouteChildren: RootRouteChildren = {
+  IndexRoute: IndexRoute,
   SeasonsSeasonRoute: SeasonsSeasonRoute,
   SeasonsIndexRoute: SeasonsIndexRoute,
 }

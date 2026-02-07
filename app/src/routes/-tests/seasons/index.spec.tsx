@@ -17,13 +17,13 @@ beforeEach(() => {
 });
 
 describe('SeasonsPage', () => {
-  it('deve renderizar a lista de temporadas', async () => {
+  it('should render the seasons list', async () => {
     expect(await screen.findByText(/formula one seasons/i)).toBeInTheDocument();
     expect(await screen.findByText('2024')).toBeInTheDocument();
     expect(await screen.findByText('2023')).toBeInTheDocument();
   });
 
-  it('deve ir para a página da temporada 2024 ao clicar no respectivo link', async () => {
+  it("should navigate to the 2024 season page on clicking it's link", async () => {
     await act(async () => {
       (await screen.findByText('2024')).click();
     });

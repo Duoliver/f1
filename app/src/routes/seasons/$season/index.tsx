@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router';
-import PageLayout from '../../layouts/PageLayout';
+import PageLayout from '../../../layouts/PageLayout';
 
-export const Route = createFileRoute('/seasons/$season')({
+export const Route = createFileRoute('/seasons/$season/')({
   component: SeasonPage,
 });
 

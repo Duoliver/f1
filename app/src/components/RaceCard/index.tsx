@@ -13,10 +13,10 @@ export default function RaceCard({ race }: RaceCardProps) {
       <header className="flex flex-col gap-2">
         <div className="flex justify-between">
           <h6>Round {race.round}</h6>
-          <p className="p-0">{race.date}</p>
+          <p className="p-0 uppercase">{formatDate(race.date)}</p>
         </div>
-        <h3 className="text-yellow">{race.grandPrixId}</h3>
-        <p className="p-0 uppercase">{race.circuitId}</p>
+        <h3 className="text-yellow">{cleanSlug(race.grandPrixId)}</h3>
+        <p className="p-0 uppercase">{cleanSlug(race.circuitId)}</p>
       </header>
       <footer className="flex flex-col">
         {race.raceResults.slice(0, 3).map((driverResult) => (
@@ -28,7 +28,7 @@ export default function RaceCard({ race }: RaceCardProps) {
               <h5 className="text-black">{driverResult.positionNumber}</h5>
             </span>
             <div>
-              <h6>{driverResult.driverId}</h6>
+              <h6 className="uppercase">{cleanSlug(driverResult.driverId)}</h6>
               <p className="p-0 text-yellow uppercase">
                 {driverResult.time ||
                   driverResult.gap ||
@@ -41,4 +41,18 @@ export default function RaceCard({ race }: RaceCardProps) {
       </footer>
     </section>
   );
+}
+
+const dateFormatter = Intl.DateTimeFormat('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  timeZone: 'UTC',
+});
+
+function formatDate(date: string) {
+  return dateFormatter.format(new Date(date));
+}
+
+function cleanSlug(slug: string) {
+  return slug.split('-').join(' ');
 }

@@ -9,8 +9,16 @@ export default function GridPlaceSmall({ driverResult }: GridPlaceSmallProps) {
         <h5 className="text-black">{driverResult.positionNumber}</h5>
       </span>
       <div className="flex flex-col gap-1">
-        <h6 className="uppercase">{cleanSlug(driverResult.driverId)}</h6>
-        <p className="p-0 text-yellow uppercase">
+        <h6
+          className="uppercase"
+          data-testid={`race-card-driver-${driverResult.positionNumber}-name`}
+        >
+          {cleanSlug(driverResult.driverId)}
+        </h6>
+        <p
+          className="p-0 text-yellow uppercase"
+          data-testid={`race-card-driver-${driverResult.positionNumber}-result-time`}
+        >
           {getDriverResultTimeOrStatus(driverResult)}
         </p>
       </div>

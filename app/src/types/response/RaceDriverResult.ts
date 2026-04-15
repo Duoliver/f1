@@ -2,10 +2,10 @@ import type DriverResult from '../common/DriverResult';
 
 export default interface RaceDriverResult extends DriverResult {
   sharedCar: boolean;
-  timePenalty: string;
-  timePenaltyMillis: number;
-  gapLaps: number;
-  reasonRetired: string;
+  timePenalty: string | null;
+  timePenaltyMillis: number | null;
+  gapLaps: number | null;
+  reasonRetired: string | null;
   points: number;
   polePosition: boolean;
   qualificationPositionNumber: number;

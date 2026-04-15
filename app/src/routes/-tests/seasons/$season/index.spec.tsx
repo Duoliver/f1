@@ -30,12 +30,12 @@ describe('SeasonPage', () => {
   });
 
   it('should render the 2002 italian grand prix in monza', async () => {
-    const cardElement = await screen.findByTestId('race-2002-04-16');
+    const cardElement = await screen.findByTestId('race-card-1');
     expect(cardElement).toBeInTheDocument();
   });
 
   it('should render the 2002 british grand prix in brands hatch', async () => {
-    const cardElement = await screen.findByTestId('race-2002-04-30');
+    const cardElement = await screen.findByTestId('race-card-2');
     expect(cardElement).toBeInTheDocument();
   });
 

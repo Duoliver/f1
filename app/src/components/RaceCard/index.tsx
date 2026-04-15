@@ -6,7 +6,7 @@ export default function RaceCard({ race }: RaceCardProps) {
   return (
     <section
       className="flex flex-col p-4 gap-12 border border-white"
-      data-testid={`race-${race.date}`}
+      data-testid={`race-card-${race.round}`}
     >
       <RaceCardHeader
         circuitName={race.circuitId}

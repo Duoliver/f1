@@ -7,11 +7,11 @@ export default interface DriverResult {
   constructorId: string;
   engineManufacturerId: string;
   tyreManufacturerId: string;
-  time: string; // 1:25.226
-  timeMillis: number;
-  gap: string;
-  gapMillis: number;
-  interval: string;
-  intervalMillis: number;
+  time: string | null;
+  timeMillis: number | null;
+  gap: string | null;
+  gapMillis: number | null;
+  interval: string | null;
+  intervalMillis: number | null;
   laps: number;
 }

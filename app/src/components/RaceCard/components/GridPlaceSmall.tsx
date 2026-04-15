@@ -8,7 +8,7 @@ export default function GridPlaceSmall({ driverResult }: GridPlaceSmallProps) {
       <span className="flex items-center justify-center text-center aspect-square h-9 bg-yellow">
         <h5 className="text-black">{driverResult.positionNumber}</h5>
       </span>
-      <div>
+      <div className="flex flex-col gap-1">
         <h6 className="uppercase">{cleanSlug(driverResult.driverId)}</h6>
         <p className="p-0 text-yellow uppercase">
           {getDriverResultTimeOrStatus(driverResult)}

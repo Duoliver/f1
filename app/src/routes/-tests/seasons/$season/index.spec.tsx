@@ -8,14 +8,6 @@ vi.mock(import('../../../../api/services/races'), () => {
   };
 });
 
-// beforeEach(async () => {
-//   await act(async () => {
-//     render({
-//       initialLocation: '/seasons/2002',
-//     });
-//   });
-// });
-
 beforeEach(() =>
   render({
     initialLocation: '/seasons/2002',

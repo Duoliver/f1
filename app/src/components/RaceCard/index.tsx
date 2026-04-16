@@ -5,7 +5,7 @@ import type RaceCardProps from './types';
 export default function RaceCard({ race }: RaceCardProps) {
   return (
     <section
-      className="flex flex-col p-4 gap-12 border border-white"
+      className="flex flex-col p-4 justify-between border border-white"
       data-testid={`race-card-${race.round}`}
     >
       <RaceCardHeader
@@ -14,7 +14,7 @@ export default function RaceCard({ race }: RaceCardProps) {
         grandPrixName={race.grandPrixId}
         round={race.round}
       />
-      <footer className="flex flex-col gap-1">
+      <footer className="flex flex-col mt-12 gap-1">
         {race.raceResults.slice(0, 3).map((driverResult) => (
           <GridPlaceSmall
             driverResult={driverResult}

@@ -1,78 +1,20 @@
 import { createFileRoute } from '@tanstack/react-router';
 import PageLayout from '../../../../layouts/PageLayout';
 import type RaceDriverResult from '../../../../types/response/RaceDriverResult';
-import {
-  createColumnHelper,
-  useReactTable,
-  getCoreRowModel,
-  flexRender,
-} from '@tanstack/react-table';
+import { createColumnHelper } from '@tanstack/react-table';
+import Table from '../../../../components/Table';
 
 export const Route = createFileRoute('/seasons/$season/$grand-prix/')({
   component: SeasonGrandPrixPage,
 });
 
-const alignmentClasses = {
-  left: 'text-left',
-  center: 'text-center',
-  right: 'text-right',
-};
-
-function getAlignmentClass(alignment?: keyof typeof alignmentClasses) {
-  if (!alignment) return undefined;
-  return alignmentClasses[alignment] || undefined;
-}
-
 function SeasonGrandPrixPage() {
-  'use no memo';
   const title = ``;
-
-  const table = useReactTable({
-    columns: defaultColumns,
-    data,
-    getCoreRowModel: getCoreRowModel(),
-  });
 
   return (
     <PageLayout title={title}>
       <main className="flex flex-col gap-4 w-full">
-        <table>
-          <thead>
-            {table.getHeaderGroups().map((hg) => (
-              <tr key={hg.id}>
-                {hg.headers.map((header) => (
-                  <th
-                    key={header.id}
-                    className={getAlignmentClass(
-                      header.column.columnDef.meta?.textAlign
-                    )}
-                  >
-                    {flexRender(
-                      header.column.columnDef.header,
-                      header.getContext()
-                    )}
-                  </th>
-                ))}
-              </tr>
-            ))}
-          </thead>
-          <tbody>
-            {table.getRowModel().rows.map((row) => (
-              <tr key={row.id}>
-                {row.getVisibleCells().map((cell) => (
-                  <td
-                    key={cell.id}
-                    className={getAlignmentClass(
-                      cell.column.columnDef.meta?.textAlign
-                    )}
-                  >
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <Table columns={columns} data={data} />
       </main>
     </PageLayout>
   );
@@ -80,7 +22,7 @@ function SeasonGrandPrixPage() {
 
 const columnHelper = createColumnHelper<RaceDriverResult>();
 
-const defaultColumns = [
+const columns = [
   columnHelper.accessor('positionNumber', {
     header: '',
     cell: (info) => info.getValue() || '-',

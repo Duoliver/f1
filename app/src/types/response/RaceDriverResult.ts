@@ -6,13 +6,13 @@ export default interface RaceDriverResult extends DriverResult {
   timePenaltyMillis: number | null;
   gapLaps: number | null;
   reasonRetired: string | null;
-  points: number;
+  points: number | null;
   polePosition: boolean;
   qualificationPositionNumber: number;
   qualificationPositionText: string;
   gridPositionNumber: number;
   gridPositionText: string;
-  positionsGained: number;
+  positionsGained: number | null;
   pitStops: number;
   fastestLap: boolean;
   driverOfTheDay: boolean | null;

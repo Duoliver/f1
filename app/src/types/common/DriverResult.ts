@@ -1,6 +1,6 @@
 export default interface DriverResult {
   positionDisplayOrder: number;
-  positionNumber: number;
+  positionNumber: number | null;
   positionText: string;
   driverNumber: string;
   driverId: string;

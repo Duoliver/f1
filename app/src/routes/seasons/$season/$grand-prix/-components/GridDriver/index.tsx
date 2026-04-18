@@ -30,17 +30,17 @@ export default function GridDriver({
       >
         <h3 className="text-center text-black">{position || '-'}</h3>
       </div>
-      <h4 data-testid="grid-driver-name">{clearSlug(driverName)}</h4>
+      <h5 data-testid="grid-driver-name">{clearSlug(driverName)}</h5>
       <div className="col-start-2 row-start-2 flex items-center gap-2">
         <span
           data-testid="grid-driver-number"
-          className="flex items-center justify-center h5 text-black w-12 h-7 rounded-[100%] bg-cyan"
+          className="flex items-center justify-center h6 font-bold text-black w-10 h-6 rounded-[100%] bg-cyan"
         >
           {carNumber}
         </span>
         <span
           data-testid="grid-driver-constructor"
-          className="text-cyan text-2xl uppercase"
+          className="text-cyan text-xl uppercase"
         >
           {fullConstructor}
         </span>

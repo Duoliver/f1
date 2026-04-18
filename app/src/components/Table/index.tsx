@@ -16,7 +16,7 @@ export default function Table<T>({ columns, data }: TableProps<T>) {
   });
 
   return (
-    <table>
+    <table className="border-spacing-4 border-separate">
       <thead>
         {table.getHeaderGroups().map((hg) => (
           <tr key={hg.id}>

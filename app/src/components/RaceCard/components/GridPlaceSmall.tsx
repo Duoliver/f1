@@ -1,4 +1,4 @@
-import cleanSlug from '../../../utils/cleanSlug';
+import clearSlug from '../../../utils/clearSlug';
 import getDriverResultTimeOrStatus from '../../../utils/getDriverResultTimeOrStatus';
 import type { GridPlaceSmallProps } from '../types';
 
@@ -13,7 +13,7 @@ export default function GridPlaceSmall({ driverResult }: GridPlaceSmallProps) {
           className="uppercase"
           data-testid={`race-card-driver-${driverResult.positionNumber}-name`}
         >
-          {cleanSlug(driverResult.driverId)}
+          {clearSlug(driverResult.driverId)}
         </h6>
         <p
           className="p-0 text-yellow uppercase"

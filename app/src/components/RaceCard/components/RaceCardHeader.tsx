@@ -1,4 +1,4 @@
-import cleanSlug from '../../../utils/cleanSlug';
+import clearSlug from '../../../utils/clearSlug';
 import formatDate from '../../../utils/formatDate';
 import type { RaceCardHeaderProps } from '../types';
 
@@ -17,10 +17,10 @@ export default function RaceCardHeader({
         </p>
       </div>
       <h3 className="text-yellow" data-testid="race-card-gp">
-        {cleanSlug(grandPrixName)}
+        {clearSlug(grandPrixName)}
       </h3>
       <p className="p-0 uppercase" data-testid="race-card-circuit">
-        {cleanSlug(circuitName)}
+        {clearSlug(circuitName)}
       </p>
     </header>
   );

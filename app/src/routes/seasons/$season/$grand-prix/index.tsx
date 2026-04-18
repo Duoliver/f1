@@ -20,6 +20,7 @@ function SeasonGrandPrixPage() {
   );
 }
 
+// export columns from a sibling file.
 const columnHelper = createColumnHelper<RaceDriverResult>();
 
 const columns = [

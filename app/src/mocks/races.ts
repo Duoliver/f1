@@ -25,7 +25,7 @@ const raceUnusedAttributes = {
   grandSlam: false,
 };
 
-const raceResults: RaceDriverResult[] = [
+export const raceResults: RaceDriverResult[] = [
   {
     positionNumber: 1,
     driverNumber: '1',
@@ -94,6 +94,20 @@ const noGapOrReasonRetiredThirdDriver: RaceDriverResult = {
   time: null,
   gap: null,
   reasonRetired: null,
+  ...raceUnusedAttributes,
+};
+
+export const nonClassifiedDriver: RaceDriverResult = {
+  positionNumber: null,
+  driverNumber: '22',
+  driverId: 'driver-four',
+  constructorId: 'bad',
+  engineManufacturerId: 'worst',
+  tyreManufacturerId: 'pirelli',
+  laps: 6,
+  time: null,
+  gap: null,
+  reasonRetired: 'Brakes',
   ...raceUnusedAttributes,
 };
 

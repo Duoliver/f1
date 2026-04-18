@@ -1,4 +1,4 @@
-import cleanSlug from '../../../../../../utils/cleanSlug';
+import clearSlug from '../../../../../../utils/clearSlug';
 
 interface GridDriverProps {
   position: number | null;
@@ -19,13 +19,13 @@ export default function GridDriver({
 }: GridDriverProps) {
   const fullConstructor =
     constructor === engineManufacturer
-      ? cleanSlug(constructor)
-      : `${cleanSlug(constructor)}-${cleanSlug(engineManufacturer)}`;
+      ? clearSlug(constructor)
+      : `${clearSlug(constructor)}-${clearSlug(engineManufacturer)}`;
 
   return (
     <>
       <span data-testid="grid-driver-position">{position || '-'}</span>
-      <h4 data-testid="grid-driver-name">{cleanSlug(driverName)}</h4>
+      <h4 data-testid="grid-driver-name">{clearSlug(driverName)}</h4>
       <div>
         <span data-testid="grid-driver-number">{carNumber}</span>
         <span data-testid="grid-driver-constructor">{fullConstructor}</span>

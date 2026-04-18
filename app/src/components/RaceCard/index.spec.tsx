@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 import RaceCard from '.';
 import { raceTwo, raceOne, raceThree } from '../../mocks/races';
 
-describe.only('RaceCard', () => {
+describe('RaceCard', () => {
   it('should display the correct race round of race 1', () => {
     render(<RaceCard race={raceOne} />);
 

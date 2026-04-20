@@ -26,6 +26,10 @@
   --color-yellow: #cfd128;
   --color-cyan: #2ad3ce;
   --color-black: #1a1a1a;
+  --color-tyre-red: #b60000;
+  --color-tyre-yellow: #f8b800;
+  --color-tyre-blue: #210b9e;
+  --color-full-black: black;
   --color-backdrop: rgba(0, 0, 0, 0.5);
 }
 

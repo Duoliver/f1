@@ -44,15 +44,44 @@ export default function GridDriver({
         >
           {fullConstructor}
         </span>
-        <span
-          data-testid="grid-driver-tyre-manufacturer"
-          title={capitalize(tyreManufacturer)}
-        >
-          {tyreManufacturer[0]}
-        </span>
+        <TyreManufacturerIndicator tyreManufacturer={tyreManufacturer} />
       </div>
     </div>
   );
+}
+
+interface TyreManufacturerIndicatorProps {
+  tyreManufacturer: string;
+}
+
+function TyreManufacturerIndicator({
+  tyreManufacturer,
+}: TyreManufacturerIndicatorProps) {
+  return (
+    <span
+      data-testid="grid-driver-tyre-manufacturer"
+      title={capitalize(tyreManufacturer)}
+      className={`flex items-center border justify-center h6 font-bold capitalize aspect-square h-6 rounded-full ${getTyreManufacturerClassName(tyreManufacturer)}`}
+    >
+      {tyreManufacturer[0]}
+    </span>
+  );
+}
+
+const YELLOW_TYRES = ['continental', 'dunlop', 'pirelli'];
+const RED_TYRES = ['avon', 'bridgestone', 'firestone'];
+const BLUE_TYRES = ['englebert', 'goodyear', 'michelin'];
+
+function getTyreManufacturerClassName(tyreManufacturer: string) {
+  if (YELLOW_TYRES.includes(tyreManufacturer)) {
+    return 'bg-tyre-yellow border-full-black text-full-black';
+  }
+  if (RED_TYRES.includes(tyreManufacturer)) {
+    return 'bg-tyre-red border-white text-white';
+  }
+  if (BLUE_TYRES.includes(tyreManufacturer)) {
+    return 'bg-tyre-blue border-white text-white';
+  }
 }
 
 function capitalize(string: string) {

@@ -7,6 +7,14 @@ export default interface Race {
   date: string;
   grandPrixId: string;
   circuitId: string;
+  officialName: string;
+  qualifyingFormat:
+    | 'ONE_SESSION'
+    | 'TWO_SESSION'
+    | 'ONE_LAP'
+    | 'KNOCKOUT'
+    | 'ELIMINATION'
+    | 'SPRINT_RACE';
   qualifyingResults: QualifyingDriverResult[];
   raceResults: RaceDriverResult[];
 }

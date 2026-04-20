@@ -12,7 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SeasonsIndexRouteImport } from './routes/seasons/index'
 import { Route as SeasonsSeasonIndexRouteImport } from './routes/seasons/$season/index'
-import { Route as SeasonsSeasonGrandPrixIndexRouteImport } from './routes/seasons/$season/$grand-prix/index'
+import { Route as SeasonsSeasonGrandPrixIndexRouteImport } from './routes/seasons/$season/$grandPrix/index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -31,8 +31,8 @@ const SeasonsSeasonIndexRoute = SeasonsSeasonIndexRouteImport.update({
 } as any)
 const SeasonsSeasonGrandPrixIndexRoute =
   SeasonsSeasonGrandPrixIndexRouteImport.update({
-    id: '/seasons/$season/$grand-prix/',
-    path: '/seasons/$season/$grand-prix/',
+    id: '/seasons/$season/$grandPrix/',
+    path: '/seasons/$season/$grandPrix/',
     getParentRoute: () => rootRouteImport,
   } as any)
 
@@ -40,20 +40,20 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/seasons': typeof SeasonsIndexRoute
   '/seasons/$season': typeof SeasonsSeasonIndexRoute
-  '/seasons/$season/$grand-prix': typeof SeasonsSeasonGrandPrixIndexRoute
+  '/seasons/$season/$grandPrix': typeof SeasonsSeasonGrandPrixIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/seasons': typeof SeasonsIndexRoute
   '/seasons/$season': typeof SeasonsSeasonIndexRoute
-  '/seasons/$season/$grand-prix': typeof SeasonsSeasonGrandPrixIndexRoute
+  '/seasons/$season/$grandPrix': typeof SeasonsSeasonGrandPrixIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/seasons/': typeof SeasonsIndexRoute
   '/seasons/$season/': typeof SeasonsSeasonIndexRoute
-  '/seasons/$season/$grand-prix/': typeof SeasonsSeasonGrandPrixIndexRoute
+  '/seasons/$season/$grandPrix/': typeof SeasonsSeasonGrandPrixIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -61,15 +61,15 @@ export interface FileRouteTypes {
     | '/'
     | '/seasons'
     | '/seasons/$season'
-    | '/seasons/$season/$grand-prix'
+    | '/seasons/$season/$grandPrix'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/seasons' | '/seasons/$season' | '/seasons/$season/$grand-prix'
+  to: '/' | '/seasons' | '/seasons/$season' | '/seasons/$season/$grandPrix'
   id:
     | '__root__'
     | '/'
     | '/seasons/'
     | '/seasons/$season/'
-    | '/seasons/$season/$grand-prix/'
+    | '/seasons/$season/$grandPrix/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -102,10 +102,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SeasonsSeasonIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/seasons/$season/$grand-prix/': {
-      id: '/seasons/$season/$grand-prix/'
-      path: '/seasons/$season/$grand-prix'
-      fullPath: '/seasons/$season/$grand-prix'
+    '/seasons/$season/$grandPrix/': {
+      id: '/seasons/$season/$grandPrix/'
+      path: '/seasons/$season/$grandPrix'
+      fullPath: '/seasons/$season/$grandPrix'
       preLoaderRoute: typeof SeasonsSeasonGrandPrixIndexRouteImport
       parentRoute: typeof rootRouteImport
     }

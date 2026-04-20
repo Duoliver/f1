@@ -115,8 +115,10 @@ export const raceOne: Race = {
   year: 2002,
   round: 1,
   date: '2002-04-06',
-  grandPrixId: 'italia',
+  grandPrixId: 'italy',
   circuitId: 'monza',
+  officialName: "Gran Premio Vodafone d'Italia 2002",
+  qualifyingFormat: 'KNOCKOUT',
   qualifyingResults: [],
   raceResults: [...raceResults, thirdDriver],
 };
@@ -127,6 +129,8 @@ export const raceTwo: Race = {
   date: '2002-04-30',
   grandPrixId: 'great-britain',
   circuitId: 'brands-hatch',
+  officialName: "2002 Foster's British Grand Prix",
+  qualifyingFormat: 'KNOCKOUT',
   qualifyingResults: [],
   raceResults: [...raceResults, retiredThirdDriver],
 };
@@ -137,6 +141,8 @@ export const raceThree: Race = {
   date: '2002-05-21',
   grandPrixId: 'monaco',
   circuitId: 'monaco',
+  officialName: 'Grand Prix de Monaco 2002',
+  qualifyingFormat: 'KNOCKOUT',
   qualifyingResults: [],
   raceResults: [...raceResults, noGapOrReasonRetiredThirdDriver],
 };

@@ -1,5 +1,5 @@
 export default interface Filter<T> {
-  _sort: {
+  _sort?: {
     key: keyof T;
     order: FilterSortOrder;
   };

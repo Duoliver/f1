@@ -11,7 +11,6 @@ function SeasonPage() {
   const { season } = Route.useParams();
   const { races } = useRaces({
     year: Number(season),
-    _sort: { key: 'round', order: 'ASC' },
   });
 
   const title = `${season} Formula One Season`;

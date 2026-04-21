@@ -41,7 +41,7 @@ describe('RaceCard', () => {
 
     const gpElement = screen.getByTestId('race-card-gp');
 
-    expect(gpElement).toHaveTextContent(/italia/i);
+    expect(gpElement).toHaveTextContent(/italy/i);
   });
 
   it('should display the compound noun grand prix name correctly', () => {

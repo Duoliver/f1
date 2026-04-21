@@ -5,6 +5,7 @@ import { createColumnHelper } from '@tanstack/react-table';
 import Table from '../../../../components/Table';
 import GridDriver from './-components/GridDriver';
 import useRaces from '../../../../api/hooks/useRaces';
+import { formatFullDate } from '../../../../utils/formatDate';
 
 export const Route = createFileRoute('/seasons/$season/$grandPrix/')({
   component: SeasonGrandPrixPage,
@@ -29,6 +30,11 @@ function SeasonGrandPrixPage() {
   return (
     <PageLayout title={race.officialName}>
       <main className="flex flex-col gap-4 w-full">
+        <span data-testid="season-grand-prix-round">Round {race.round}</span>
+        <span data-testid="season-grand-prix-circuit">{race.circuitId}</span>
+        <span data-testid="season-grand-prix-date">
+          {formatFullDate(race.date)}
+        </span>
         <Table columns={columns} data={data} />
       </main>
     </PageLayout>

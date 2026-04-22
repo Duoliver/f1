@@ -2,14 +2,14 @@ import {
   render as rtlRender,
   type RenderOptions,
 } from '@testing-library/react';
-import { queryClientOptions } from '../api/react-query/queryClient';
+import { queryClientOptions } from '~/api/react-query/queryClient';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import {
   createMemoryHistory,
   createRouter,
   RouterProvider,
 } from '@tanstack/react-router';
-import { routeTree } from '../routeTree.gen';
+import { routeTree } from '~/routeTree.gen';
 
 interface RenderWithFileRoutesOptions extends Omit<RenderOptions, 'wrapper'> {
   initialLocation?: string;

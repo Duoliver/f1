@@ -1,5 +1,5 @@
-import type Race from '../types/response/Race';
-import type RaceDriverResult from '../types/response/RaceDriverResult';
+import type Race from '~/types/response/Race';
+import type RaceDriverResult from '~/types/response/RaceDriverResult';
 
 const raceUnusedAttributes = {
   positionDisplayOrder: 1,

@@ -1,5 +1,5 @@
-import type SeasonFilter from '../../../types/request/SeasonFilter';
-import type Season from '../../../types/response/Season';
+import type SeasonFilter from '~/types/request/SeasonFilter';
+import type Season from '~/types/response/Season';
 import get from '../get';
 
 export default async function getSeasons(

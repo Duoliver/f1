@@ -1,4 +1,4 @@
-import { formatFullDate } from '../../../../../../utils/formatDate';
+import { formatFullDate } from '~/utils/formatDate';
 import type SeasonGrandPrixPageHeaderProps from './types';
 
 export default function SeasonGrandPrixPageHeader({

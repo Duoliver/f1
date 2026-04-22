@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import RaceCard from '.';
-import { raceTwo, raceOne, raceThree } from '../../mocks/races';
+import { raceTwo, raceOne, raceThree } from '~/mocks/races';
 
 describe('RaceCard', () => {
   it('should display the correct race round of race 1', () => {

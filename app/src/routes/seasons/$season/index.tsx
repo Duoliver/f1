@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
-import PageLayout from '../../../layouts/PageLayout';
-import useRaces from '../../../api/hooks/useRaces';
+import PageLayout from '~/layouts/PageLayout';
+import useRaces from '~/api/hooks/useRaces';
 import SeasonRaceCard from './-components/SeasonRaceCard';
 
 export const Route = createFileRoute('/seasons/$season/')({

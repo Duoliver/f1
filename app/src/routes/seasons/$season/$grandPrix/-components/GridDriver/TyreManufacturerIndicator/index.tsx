@@ -1,4 +1,4 @@
-import capitalize from '../../../../../../../utils/capitalize';
+import capitalize from '~/utils/capitalize';
 import type { TyreManufacturerIndicatorProps } from '../types';
 import { getTyreManufacturerClassName } from './utils';
 

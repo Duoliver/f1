@@ -1,5 +1,5 @@
-import clearSlug from '../../../utils/clearSlug';
-import getDriverResultTimeOrStatus from '../../../utils/getDriverResultTimeOrStatus';
+import clearSlug from '~/utils/clearSlug';
+import getDriverResultTimeOrStatus from '~/utils/getDriverResultTimeOrStatus';
 import type { GridPlaceSmallProps } from '../types';
 
 export default function GridPlaceSmall({ driverResult }: GridPlaceSmallProps) {

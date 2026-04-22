@@ -1,10 +1,10 @@
 import { createFileRoute } from '@tanstack/react-router';
-import PageLayout from '../../../../layouts/PageLayout';
-import type RaceDriverResult from '../../../../types/response/RaceDriverResult';
+import PageLayout from '~/layouts/PageLayout';
+import type RaceDriverResult from '~/types/response/RaceDriverResult';
 import { createColumnHelper } from '@tanstack/react-table';
-import Table from '../../../../components/Table';
+import Table from '~/components/Table';
 import GridDriver from './-components/GridDriver';
-import useRaces from '../../../../api/hooks/useRaces';
+import useRaces from '~/api/hooks/useRaces';
 import SeasonGrandPrixPageHeader from './-components/SeasonGrandPrixPageHeader';
 
 export const Route = createFileRoute('/seasons/$season/$grandPrix/')({
@@ -61,7 +61,7 @@ const columns = [
   }),
   columnHelper.accessor('fastestLap', {
     header: 'Best Lap',
-    cell: ({ row: { original } }) =>
+    cell: (/*{ row: { original } }*/) =>
       // fastestLaps.find((fl) => original.driverId === fl.driverId)?.time ||
       '-',
     meta: {

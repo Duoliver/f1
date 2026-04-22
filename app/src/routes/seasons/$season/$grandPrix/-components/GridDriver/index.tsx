@@ -1,4 +1,4 @@
-import clearSlug from '../../../../../../utils/clearSlug';
+import clearSlug from '~/utils/clearSlug';
 import type GridDriverProps from './types';
 import TyreManufacturerIndicator from './TyreManufacturerIndicator';
 

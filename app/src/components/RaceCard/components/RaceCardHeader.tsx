@@ -1,5 +1,5 @@
-import clearSlug from '../../../utils/clearSlug';
-import formatDate from '../../../utils/formatDate';
+import clearSlug from '~/utils/clearSlug';
+import formatDate from '~/utils/formatDate';
 import useRaceCardContext from '../context/useRaceCardContext';
 
 export default function RaceCardHeader() {

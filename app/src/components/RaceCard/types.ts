@@ -1,6 +1,6 @@
 import type React from 'react';
-import type Race from '../../types/response/Race';
-import type RaceDriverResult from '../../types/response/RaceDriverResult';
+import type Race from '~/types/response/Race';
+import type RaceDriverResult from '~/types/response/RaceDriverResult';
 
 export interface RaceCardAdapterProps {
   race: Race;

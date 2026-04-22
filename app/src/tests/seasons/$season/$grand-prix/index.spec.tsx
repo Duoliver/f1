@@ -1,8 +1,8 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import racesMock from '../../../../mocks/races';
-import { render, screen } from '../../../../test-utils';
+import racesMock from '~/mocks/races';
+import { render, screen } from '~/test-utils';
 
-vi.mock(import('../../../../api/services/races'), () => {
+vi.mock(import('~/api/services/races'), () => {
   return {
     default: racesMock,
   };

@@ -1,8 +1,8 @@
 import { describe, it, expect, vi } from 'vitest';
-import { act, render, screen } from '../../../test-utils';
+import { act, render, screen } from '../../test-utils';
 import { beforeEach } from 'vitest';
 
-vi.mock(import('../../../api/services/seasons/index.ts'), () => {
+vi.mock(import('../../api/services/seasons/index.ts'), () => {
   return {
     default: () => {
       return Promise.resolve([{ year: '2024' }, { year: '2023' }]);

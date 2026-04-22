@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from 'vitest';
-import { act, render, screen } from '../../test-utils';
+import { act, render, screen } from '../test-utils';
 
 beforeEach(() => {
   render({

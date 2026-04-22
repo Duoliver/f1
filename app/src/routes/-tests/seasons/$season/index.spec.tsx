@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { render, screen } from '../../../../test-utils';
+import { act, render, screen } from '../../../../test-utils';
 import racesMock from '../../../../mocks/races';
 
 vi.mock(import('../../../../api/services/races'), () => {
@@ -31,5 +31,13 @@ describe('SeasonPage', () => {
     expect(cardElement).toBeInTheDocument();
   });
 
-  // TODO test if it correctly goes to the race page when clicked. not implemented yet.
+  it('should take to the season grand prix page when clicked the grand prix card title', async () => {
+    await act(async () => {
+      (await screen.findByText('italy')).click();
+    });
+
+    expect(await screen.findByTestId('pathname')).toHaveTextContent(
+      '/seasons/2002/italy'
+    );
+  });
 });

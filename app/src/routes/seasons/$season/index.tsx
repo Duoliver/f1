@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router';
 import PageLayout from '../../../layouts/PageLayout';
 import useRaces from '../../../api/hooks/useRaces';
-import RaceCard from '../../../components/RaceCard';
+import SeasonRaceCard from './-components/SeasonRaceCard';
 
 export const Route = createFileRoute('/seasons/$season/')({
   component: SeasonPage,
@@ -21,7 +21,7 @@ function SeasonPage() {
         <h2 className="text-center">Calendar</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
           {races.map((race) => (
-            <RaceCard race={race} key={race.date} />
+            <SeasonRaceCard race={race} key={race.date} />
           ))}
         </div>
       </main>

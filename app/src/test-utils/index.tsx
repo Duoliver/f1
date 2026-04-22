@@ -21,24 +21,6 @@ function generateQueryClient() {
   return new QueryClient(queryClientOptions);
 }
 
-export function createTestRouterFromFiles(
-  initialLocation = '/',
-  client?: QueryClient
-) {
-  const queryClient = client ?? generateQueryClient();
-  const router = createRouter({
-    routeTree,
-    history: createMemoryHistory({
-      initialEntries: [initialLocation],
-    }),
-    context: {
-      queryClient,
-    },
-  });
-
-  return router;
-}
-
 function renderWithFileRoutes({
   initialLocation = '/',
   routerContext = {},

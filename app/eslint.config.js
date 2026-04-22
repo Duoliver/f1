@@ -18,6 +18,7 @@ export default defineConfig([
     rules: {
       ...vitest.configs.recommended.rules,
       'react-refresh/only-export-components': 'off',
+      'typescript-eslint/no-empty-object-type': 'warn',
     },
     extends: [
       js.configs.recommended,

@@ -16,7 +16,10 @@ export default function GridDriver({
       : `${clearSlug(constructor)}-${clearSlug(engineManufacturer)}`;
 
   return (
-    <div className="grid grid-cols-[3.75rem_minmax(0,1fr)] grid-rows-2 gap-x-2 gap-y-0">
+    <div
+      data-testid="grid-driver"
+      className="grid grid-cols-[3.75rem_minmax(0,1fr)] grid-rows-2 gap-x-2 gap-y-0"
+    >
       <div
         data-testid="grid-driver-position"
         className="row-span-2 flex items-center justify-center aspect-square bg-yellow w-[3.75rem]"

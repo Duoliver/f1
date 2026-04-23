@@ -104,7 +104,7 @@ export const nonClassifiedDriver: RaceDriverResult = {
   constructorId: 'bad',
   engineManufacturerId: 'worst',
   tyreManufacturerId: 'pirelli',
-  laps: 6,
+  laps: 1,
   time: null,
   gap: null,
   reasonRetired: 'Brakes',
@@ -147,6 +147,19 @@ export const raceThree: Race = {
   raceResults: [...raceResults, noGapOrReasonRetiredThirdDriver],
 };
 
-const racesMock = (): Promise<Race[]> => Promise.resolve([raceOne, raceTwo]);
+export const raceFour: Race = {
+  year: 2002,
+  round: 4,
+  date: '2002-05-29',
+  grandPrixId: 'san-marino',
+  circuitId: 'imola-clockwise',
+  officialName: 'Gran Premio di San Marino 2002',
+  qualifyingFormat: 'KNOCKOUT',
+  qualifyingResults: [],
+  raceResults: [...raceResults, nonClassifiedDriver],
+};
+
+const racesMock = (): Promise<Race[]> =>
+  Promise.resolve([raceOne, raceTwo, raceThree, raceFour]);
 
 export default racesMock;

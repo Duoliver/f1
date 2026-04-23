@@ -25,7 +25,7 @@ function SeasonGrandPrixPage() {
     throw new Error(`No grand prix of ${grandPrix} found for season ${season}`);
   }
 
-  const data: RaceDriverResult[] = [];
+  const data: RaceDriverResult[] = race.raceResults;
 
   return (
     <PageLayout title={race.officialName}>

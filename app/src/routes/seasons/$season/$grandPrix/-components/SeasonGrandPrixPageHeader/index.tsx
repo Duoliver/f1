@@ -1,5 +1,6 @@
 import { formatFullDate } from '~/utils/formatDate';
 import type SeasonGrandPrixPageHeaderProps from './types';
+import clearSlug from '~/utils/clearSlug';
 
 export default function SeasonGrandPrixPageHeader({
   circuitName,
@@ -18,7 +19,7 @@ export default function SeasonGrandPrixPageHeader({
         data-testid="season-grand-prix-circuit"
         className="flex-1 uppercase text-center"
       >
-        {circuitName}
+        {clearSlug(circuitName)}
       </span>
       <span
         data-testid="season-grand-prix-date"

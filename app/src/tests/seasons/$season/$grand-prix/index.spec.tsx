@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import racesMock from '~/mocks/races';
-import { renderWithFileRoutes, screen } from '~/test-utils';
+import { renderWithFileRoutes, screen, within } from '~/test-utils';
 
 vi.mock(import('~/api/services/races'), () => {
   return {
@@ -10,7 +10,7 @@ vi.mock(import('~/api/services/races'), () => {
 
 beforeEach(() =>
   renderWithFileRoutes({
-    initialLocation: '/seasons/2002/italy',
+    initialLocation: '/seasons/2002/san-marino',
   })
 );
 
@@ -19,21 +19,80 @@ describe('SeasonGrandPrixPage', () => {
     const element = await screen.findByRole('heading', {
       level: 1,
     });
-    expect(element).toHaveTextContent(/Gran Premio Vodafone d'Italia 2002/i);
+    expect(element).toHaveTextContent(/gran premio di san marino 2002/i);
   });
 
   it('should display the correct round number', async () => {
     const element = await screen.findByTestId('season-grand-prix-round');
-    expect(element).toHaveTextContent(/round 1/i);
+    expect(element).toHaveTextContent(/round 4/i);
   });
 
   it('should display the correct circuit name', async () => {
     const element = await screen.findByTestId('season-grand-prix-circuit');
-    expect(element).toHaveTextContent(/monza/i);
+    expect(element).toHaveTextContent(/imola clockwise/i);
   });
 
   it('should display the correct race date', async () => {
     const element = await screen.findByTestId('season-grand-prix-date');
-    expect(element).toHaveTextContent(/6 april 2002/i);
+    expect(element).toHaveTextContent(/29 may 2002/i);
+  });
+
+  it('should display the grid driver information', async () => {
+    const rows = await getTableRows();
+
+    const [firstGridDriver, secondGridDriver, thirdGridDriver] =
+      screen.getAllByTestId('grid-driver');
+
+    expect(rows[0]).toContainElement(firstGridDriver);
+    expect(rows[1]).toContainElement(secondGridDriver);
+    expect(rows[2]).toContainElement(thirdGridDriver);
+  });
+
+  it('should display the position if the driver finished the race', async () => {
+    const [firstRow] = await getTableRows();
+    const firstRowColumns = within(firstRow).getAllByRole('cell');
+    const position = within(firstRowColumns[0]).getByTestId(
+      'grid-driver-position'
+    );
+
+    expect(position).toHaveTextContent('1');
+  });
+
+  it('should display the race time if the driver finished the race', async () => {
+    const [firstRow] = await getTableRows();
+    const firstRowColumns = within(firstRow).getAllByRole('cell');
+    const raceTimeColumn = firstRowColumns[3];
+
+    expect(raceTimeColumn).toHaveTextContent('1:30:00.000');
+  });
+
+  it('should display the position as a hyphen character if the driver DNS or DNF', async () => {
+    const rows = await getTableRows();
+    const thirdRowColumns = within(rows[2]).getAllByRole('cell');
+    const position = within(thirdRowColumns[0]).getByTestId(
+      'grid-driver-position'
+    );
+
+    expect(position).toHaveTextContent('-');
+  });
+
+  it('should display the position text in the race time column if the driver DNS or DNF', async () => {
+    const rows = await getTableRows();
+    const thirdRowColumns = within(rows[2]).getAllByRole('cell');
+    const raceTimeColumn = thirdRowColumns[3];
+
+    expect(raceTimeColumn).toHaveTextContent(/brakes/i);
   });
 });
+
+async function getTableBody() {
+  const tableElement = await screen.findByRole('table');
+
+  return within(tableElement).getAllByRole('rowgroup')[1];
+}
+
+async function getTableRows() {
+  const tableBody = await getTableBody();
+
+  return within(tableBody).getAllByRole('row');
+}

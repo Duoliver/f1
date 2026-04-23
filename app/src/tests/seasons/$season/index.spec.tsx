@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { act, render, screen } from '~/test-utils';
+import { act, renderWithFileRoutes, screen } from '~/test-utils';
 import racesMock from '~/mocks/races';
 
 vi.mock(import('~/api/services/races'), () => {
@@ -9,7 +9,7 @@ vi.mock(import('~/api/services/races'), () => {
 });
 
 beforeEach(() =>
-  render({
+  renderWithFileRoutes({
     initialLocation: '/seasons/2002',
   })
 );

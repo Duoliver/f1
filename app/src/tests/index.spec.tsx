@@ -1,17 +1,17 @@
 import { beforeEach, describe, expect, it } from 'vitest';
-import { act, render, screen } from '~/test-utils';
+import { renderWithFileRoutes, screen } from '~/test-utils';
+import { userEvent } from '@testing-library/user-event';
 
 beforeEach(() => {
-  render({
+  renderWithFileRoutes({
     initialLocation: '/',
   });
 });
 
 describe('HomePage', () => {
   it("should navigate to the seasons page on clicking it's link", async () => {
-    await act(async () => {
-      (await screen.findByText(/seasons/i)).click();
-    });
+    const seasonsLinkElement = await screen.findByText(/seasons/i);
+    await userEvent.click(seasonsLinkElement);
 
     expect(await screen.findByTestId('pathname')).toHaveTextContent('/seasons');
   });

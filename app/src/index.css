@@ -79,7 +79,7 @@
   .h5 {
     font-size: var(--text-2xl);
     font-family: var(--font-bold);
-    line-height: var(--text-2xl);
+    line-height: var(--text-3xl);
   }
   h4,
   .h4 {

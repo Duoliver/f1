@@ -1,11 +1,12 @@
 import { createFileRoute } from '@tanstack/react-router';
 import PageLayout from '~/layouts/PageLayout';
-import type RaceDriverResult from '~/types/response/RaceDriverResult';
 import { createColumnHelper } from '@tanstack/react-table';
 import Table from '~/components/Table';
 import GridDriver from './-components/GridDriver';
 import useRaces from '~/api/hooks/useRaces';
 import SeasonGrandPrixPageHeader from './-components/SeasonGrandPrixPageHeader';
+import type RaceDriverFullResult from '~/types/page/seasons/$season/$grandPrix/RaceDriverFullResult';
+import { useMemo } from 'react';
 
 export const Route = createFileRoute('/seasons/$season/$grandPrix/')({
   component: SeasonGrandPrixPage,
@@ -25,7 +26,18 @@ function SeasonGrandPrixPage() {
     throw new Error(`No grand prix of ${grandPrix} found for season ${season}`);
   }
 
-  const data: RaceDriverResult[] = race.raceResults;
+  const data: RaceDriverFullResult[] = useMemo(
+    () =>
+      race.raceResults.map((res) => {
+        return {
+          raceResult: res,
+          fastestLap: race.fastestLaps.find(
+            (fl) => fl.driverId === res.driverId
+          ),
+        };
+      }),
+    [race]
+  );
 
   return (
     <PageLayout title={race.officialName}>
@@ -42,45 +54,53 @@ function SeasonGrandPrixPage() {
 }
 
 // export columns from a sibling file.
-const columnHelper = createColumnHelper<RaceDriverResult>();
+const columnHelper = createColumnHelper<RaceDriverFullResult>();
 
 const columns = [
-  columnHelper.accessor('positionNumber', {
+  columnHelper.accessor('raceResult.positionNumber', {
     header: '',
-    cell: ({ getValue, row: { original } }) => (
+    cell: ({
+      getValue,
+      row: {
+        original: { raceResult },
+      },
+    }) => (
       <GridDriver
         position={getValue()}
-        driverName={original.driverId}
-        carNumber={original.driverNumber}
-        constructor={original.constructorId}
-        engineManufacturer={original.engineManufacturerId}
-        tyreManufacturer={original.tyreManufacturerId}
-        key={original.driverId}
+        driverName={raceResult.driverId}
+        carNumber={raceResult.driverNumber}
+        constructor={raceResult.constructorId}
+        engineManufacturer={raceResult.engineManufacturerId}
+        tyreManufacturer={raceResult.tyreManufacturerId}
+        key={raceResult.driverId}
       />
     ),
   }),
-  columnHelper.accessor('fastestLap', {
+  columnHelper.accessor('fastestLap.time', {
     header: 'Best Lap',
-    cell: (/*{ row: { original } }*/) =>
-      // fastestLaps.find((fl) => original.driverId === fl.driverId)?.time ||
-      '-',
+    cell: ({ getValue }) => getValue() || '-',
     meta: {
       textAlign: 'center',
     },
   }),
-  columnHelper.accessor('laps', {
+  columnHelper.accessor('raceResult.laps', {
     header: 'Laps',
-    cell: (info) => info.getValue() || '-',
+    cell: ({ getValue }) => getValue() || '-',
     meta: {
       textAlign: 'center',
     },
   }),
-  columnHelper.accessor('time', {
+  columnHelper.accessor('raceResult.time', {
     header: 'Race Time',
-    cell: ({ getValue, row: { original } }) =>
-      original.positionNumber === 1
+    cell: ({
+      getValue,
+      row: {
+        original: { raceResult },
+      },
+    }) =>
+      raceResult.positionNumber === 1
         ? getValue()
-        : original.gap || original.reasonRetired || '-',
+        : raceResult.gap || raceResult.reasonRetired || '-',
     meta: {
       textAlign: 'right',
     },

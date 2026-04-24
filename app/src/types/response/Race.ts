@@ -1,4 +1,5 @@
 import type QualifyingDriverResult from './QualifyingDriverResult';
+import type RaceDriverFastestLap from './RaceDriverFastestLap';
 import type RaceDriverResult from './RaceDriverResult';
 
 export default interface Race {
@@ -17,4 +18,5 @@ export default interface Race {
     | 'SPRINT_RACE';
   qualifyingResults: QualifyingDriverResult[];
   raceResults: RaceDriverResult[];
+  fastestLaps: RaceDriverFastestLap[];
 }

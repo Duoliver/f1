@@ -1,6 +1,7 @@
 import type DriverResult from '../common/DriverResult';
 
 export default interface QualifyingDriverResult extends DriverResult {
+  laps: number;
   q1: null;
   q1Millis: null;
   q2: null;

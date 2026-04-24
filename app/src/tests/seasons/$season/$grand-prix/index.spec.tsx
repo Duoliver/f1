@@ -50,7 +50,7 @@ describe('SeasonGrandPrixPage', () => {
 
   it('should display the position if the driver finished the race', async () => {
     const [firstRow] = await getTableRows();
-    const firstRowColumns = within(firstRow).getAllByRole('cell');
+    const firstRowColumns = getRowColumns(firstRow);
     const position = within(firstRowColumns[0]).getByTestId(
       'grid-driver-position'
     );
@@ -68,7 +68,7 @@ describe('SeasonGrandPrixPage', () => {
 
   it('should display the position as a hyphen character if the driver DNS or DNF', async () => {
     const rows = await getTableRows();
-    const thirdRowColumns = within(rows[2]).getAllByRole('cell');
+    const thirdRowColumns = getRowColumns(rows[2]);
     const position = within(thirdRowColumns[0]).getByTestId(
       'grid-driver-position'
     );
@@ -76,12 +76,20 @@ describe('SeasonGrandPrixPage', () => {
     expect(position).toHaveTextContent('-');
   });
 
-  it('should display the position text in the race time column if the driver DNS or DNF', async () => {
+  it('should display the retirement reason in the race time column if the driver DNS or DNF', async () => {
     const rows = await getTableRows();
-    const thirdRowColumns = within(rows[2]).getAllByRole('cell');
+    const thirdRowColumns = getRowColumns(rows[2]);
     const raceTimeColumn = thirdRowColumns[3];
 
     expect(raceTimeColumn).toHaveTextContent(/brakes/i);
+  });
+
+  it('should display the driver fastest lap time if they set a lap', async () => {
+    const [firstRow] = await getTableRows();
+    const firstRowColumns = getRowColumns(firstRow);
+    const fastestLapColumn = firstRowColumns[1];
+
+    expect(fastestLapColumn).toHaveTextContent('1:23.657');
   });
 });
 
@@ -95,4 +103,8 @@ async function getTableRows() {
   const tableBody = await getTableBody();
 
   return within(tableBody).getAllByRole('row');
+}
+
+function getRowColumns(row: HTMLElement) {
+  return within(row).getAllByRole('cell');
 }

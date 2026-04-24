@@ -1,6 +1,7 @@
 import type DriverResult from '../common/DriverResult';
 
 export default interface RaceDriverResult extends DriverResult {
+  laps: number;
   sharedCar: boolean;
   timePenalty: string | null;
   timePenaltyMillis: number | null;

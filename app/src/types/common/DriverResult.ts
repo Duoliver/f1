@@ -13,5 +13,4 @@ export default interface DriverResult {
   gapMillis: number | null;
   interval: string | null;
   intervalMillis: number | null;
-  laps: number;
 }

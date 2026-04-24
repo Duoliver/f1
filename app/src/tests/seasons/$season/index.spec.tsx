@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { act, renderWithFileRoutes, screen } from '~/test-utils';
 import racesMock from '~/mocks/races';
+import userEvent from '@testing-library/user-event';
 
 vi.mock(import('~/api/services/races'), () => {
   return {
@@ -32,9 +33,10 @@ describe('SeasonPage', () => {
   });
 
   it('should take to the season grand prix page when clicked the grand prix card title', async () => {
-    await act(async () => {
-      (await screen.findByText('italy')).click();
+    const linkElement = await screen.findByRole('link', {
+      name: 'italy',
     });
+    await userEvent.click(linkElement);
 
     expect(await screen.findByTestId('pathname')).toHaveTextContent(
       '/seasons/2002/italy'

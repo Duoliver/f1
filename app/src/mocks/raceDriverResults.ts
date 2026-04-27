@@ -108,7 +108,7 @@ export const nonClassifiedDriver: RaceDriverResult = {
   constructorId: 'bad',
   engineManufacturerId: 'worst',
   tyreManufacturerId: 'pirelli',
-  laps: 1,
+  laps: null,
   time: null,
   gap: null,
   reasonRetired: 'Brakes',

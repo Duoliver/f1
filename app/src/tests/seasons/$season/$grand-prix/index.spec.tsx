@@ -115,6 +115,22 @@ describe('SeasonGrandPrixPage', () => {
 
     expect(fastestLapColumn).not.toHaveClass('text-purple');
   });
+
+  it('should display the correct number of laps completed', async () => {
+    const [firstRow] = await getTableRows();
+    const firstRowColumns = getRowColumns(firstRow);
+    const lapsColumns = firstRowColumns[2];
+
+    expect(lapsColumns).toHaveTextContent('60');
+  });
+
+  it('should display a hyphen character as the number of laps no laps were completed', async () => {
+    const rows = await getTableRows();
+    const thirdRowColumns = getRowColumns(rows[2]);
+    const lapsColumns = thirdRowColumns[2];
+
+    expect(lapsColumns).toHaveTextContent('-');
+  });
 });
 
 async function getTableBody() {

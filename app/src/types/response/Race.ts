@@ -19,5 +19,5 @@ export default interface Race {
   laps: number;
   qualifyingResults: QualifyingDriverResult[];
   raceResults: RaceDriverResult[];
-  fastestLaps: RaceDriverFastestLap[];
+  fastestLaps: RaceDriverFastestLap[] | null;
 }

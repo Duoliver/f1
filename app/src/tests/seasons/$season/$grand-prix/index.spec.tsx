@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import racesMock from '~/mocks/races';
 import { renderWithFileRoutes, screen, within } from '~/test-utils';
+import { getRowColumns, getTableRows } from '~/utils/utils/tableUtils';
 
 vi.mock(import('~/api/services/races'), () => {
   return {
@@ -138,19 +139,3 @@ describe('SeasonGrandPrixPage', () => {
     expect(lapsColumns).toHaveTextContent('-');
   });
 });
-
-async function getTableBody() {
-  const tableElement = await screen.findByRole('table');
-
-  return within(tableElement).getAllByRole('rowgroup')[1];
-}
-
-async function getTableRows() {
-  const tableBody = await getTableBody();
-
-  return within(tableBody).getAllByRole('row');
-}
-
-function getRowColumns(row: HTMLElement) {
-  return within(row).getAllByRole('cell');
-}

@@ -31,7 +31,7 @@ function SeasonGrandPrixPage() {
       race.raceResults.map((res) => {
         return {
           raceResult: res,
-          fastestLap: race.fastestLaps.find(
+          fastestLap: race.fastestLaps?.find(
             (fl) => fl.driverId === res.driverId
           ),
         };

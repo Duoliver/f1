@@ -32,7 +32,7 @@ export const raceTwo: Race = {
   laps: 1,
   qualifyingResults: [],
   raceResults: [...raceResults, retiredThirdDriver],
-  fastestLaps,
+  fastestLaps: null,
 };
 
 export const raceThree: Race = {

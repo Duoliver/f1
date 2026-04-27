@@ -16,6 +16,7 @@ export default interface Race {
     | 'KNOCKOUT'
     | 'ELIMINATION'
     | 'SPRINT_RACE';
+  laps: number;
   qualifyingResults: QualifyingDriverResult[];
   raceResults: RaceDriverResult[];
   fastestLaps: RaceDriverFastestLap[];

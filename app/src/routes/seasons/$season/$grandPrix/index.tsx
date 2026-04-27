@@ -41,13 +41,19 @@ function SeasonGrandPrixPage() {
 
   return (
     <PageLayout title={race.officialName}>
-      <main className="flex flex-col gap-4 w-full">
+      <main className="flex flex-col gap-16 w-full">
         <SeasonGrandPrixPageHeader
           round={race.round}
           circuitName={race.circuitId}
           date={race.date}
         />
-        <Table columns={columns} data={data} />
+        <div className="flex flex-col gap-4 w-full">
+          <h2 className="uppercase text-center">
+            Race classification after {race.laps}{' '}
+            {race.laps === 1 ? 'lap' : 'laps'}
+          </h2>
+          <Table columns={columns} data={data} />
+        </div>
       </main>
     </PageLayout>
   );

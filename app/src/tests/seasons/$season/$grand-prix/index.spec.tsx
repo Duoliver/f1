@@ -37,6 +37,12 @@ describe('SeasonGrandPrixPage', () => {
     expect(element).toHaveTextContent(/29 may 2002/i);
   });
 
+  it('should display the race results as "race classification after X laps" given X is greater than 1', async () => {
+    const element = await screen.findByRole('heading', { level: 2 });
+
+    expect(element).toHaveTextContent(/race classification after 60 laps/i);
+  });
+
   it('should display the grid driver information', async () => {
     const rows = await getTableRows();
 

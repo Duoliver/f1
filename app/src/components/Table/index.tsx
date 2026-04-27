@@ -3,7 +3,7 @@ import {
   getCoreRowModel,
   useReactTable,
 } from '@tanstack/react-table';
-import { getAlignmentClass } from './utils';
+import { getAlignmentClass, getCellClass } from './utils';
 import type TableProps from './types';
 
 export default function Table<T>({ columns, data }: TableProps<T>) {
@@ -40,12 +40,7 @@ export default function Table<T>({ columns, data }: TableProps<T>) {
         {table.getRowModel().rows.map((row) => (
           <tr key={row.id}>
             {row.getVisibleCells().map((cell) => (
-              <td
-                key={cell.id}
-                className={getAlignmentClass(
-                  cell.column.columnDef.meta?.textAlign
-                )}
-              >
+              <td key={cell.id} className={getCellClass<T>(cell)}>
                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
               </td>
             ))}

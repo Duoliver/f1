@@ -91,6 +91,30 @@ describe('SeasonGrandPrixPage', () => {
 
     expect(fastestLapColumn).toHaveTextContent('1:23.657');
   });
+
+  it('should display the driver fastest lap time as a hyphen character if they did not set a lap', async () => {
+    const rows = await getTableRows();
+    const thirdRowColumns = getRowColumns(rows[2]);
+    const fastestLapColumn = thirdRowColumns[1];
+
+    expect(fastestLapColumn).toHaveTextContent('-');
+  });
+
+  it('should display the driver fastest lap time in purple if it was the fastest of the race', async () => {
+    const [firstRow] = await getTableRows();
+    const firstRowColumns = getRowColumns(firstRow);
+    const fastestLapColumn = firstRowColumns[1];
+
+    expect(fastestLapColumn).toHaveClass('text-purple');
+  });
+
+  it('should display the driver fastest lap time in the default colour if it was not the fastest of the race', async () => {
+    const rows = await getTableRows();
+    const secondRowColumns = getRowColumns(rows[1]);
+    const fastestLapColumn = secondRowColumns[1];
+
+    expect(fastestLapColumn).not.toHaveClass('text-purple');
+  });
 });
 
 async function getTableBody() {

@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
 import PageLayout from '~/layouts/PageLayout';
-import { createColumnHelper } from '@tanstack/react-table';
+import { createColumnHelper, type CellContext } from '@tanstack/react-table';
 import Table from '~/components/Table';
 import GridDriver from './-components/GridDriver';
 import useRaces from '~/api/hooks/useRaces';
@@ -79,8 +79,16 @@ const columns = [
   columnHelper.accessor('fastestLap.time', {
     header: 'Best Lap',
     cell: ({ getValue }) => getValue() || '-',
+
     meta: {
       textAlign: 'center',
+      getCellContext: (context: CellContext<RaceDriverFullResult, unknown>) => {
+        if (context.row.original.raceResult.fastestLap) {
+          return {
+            className: 'text-purple',
+          };
+        }
+      },
     },
   }),
   columnHelper.accessor('raceResult.laps', {
@@ -100,7 +108,10 @@ const columns = [
     }) =>
       raceResult.positionNumber === 1
         ? getValue()
-        : raceResult.gap || raceResult.reasonRetired || '-',
+        : raceResult.gap ||
+          raceResult.reasonRetired ||
+          raceResult.positionText ||
+          '-',
     meta: {
       textAlign: 'right',
     },

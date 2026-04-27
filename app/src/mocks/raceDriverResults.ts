@@ -19,7 +19,6 @@ const raceDriverResultUnusedAttributes = {
   gridPositionText: '3',
   positionsGained: 2,
   pitStops: 3,
-  fastestLap: false,
   driverOfTheDay: null,
   grandSlam: false,
 };
@@ -35,7 +34,7 @@ const raceResults: RaceDriverResult[] = [
     laps: 60,
     time: '1:30:00.000',
     gap: null,
-
+    fastestLap: true,
     reasonRetired: null,
     ...raceDriverResultUnusedAttributes,
   },
@@ -50,6 +49,7 @@ const raceResults: RaceDriverResult[] = [
     time: '1:30:10.000',
     gap: '+10.000',
     reasonRetired: null,
+    fastestLap: false,
     ...raceDriverResultUnusedAttributes,
   },
 ];
@@ -67,6 +67,7 @@ export const thirdDriver: RaceDriverResult = {
   time: '1:30:20.000',
   gap: '+20.000',
   reasonRetired: null,
+  fastestLap: false,
   ...raceDriverResultUnusedAttributes,
 };
 
@@ -81,6 +82,7 @@ export const retiredThirdDriver: RaceDriverResult = {
   time: null,
   gap: null,
   reasonRetired: 'Out of fuel',
+  fastestLap: false,
   ...raceDriverResultUnusedAttributes,
 };
 
@@ -95,6 +97,7 @@ export const noGapOrReasonRetiredThirdDriver: RaceDriverResult = {
   time: null,
   gap: null,
   reasonRetired: null,
+  fastestLap: false,
   ...raceDriverResultUnusedAttributes,
 };
 
@@ -109,5 +112,6 @@ export const nonClassifiedDriver: RaceDriverResult = {
   time: null,
   gap: null,
   reasonRetired: 'Brakes',
+  fastestLap: false,
   ...raceDriverResultUnusedAttributes,
 };

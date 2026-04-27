@@ -108,6 +108,13 @@
     line-height: var(--text-6xl);
     color: var(--color-yellow);
   }
+  th {
+    font-size: var(--text-2xl);
+  }
+  td {
+    font-size: var(--text-2xl);
+    color: var(--color-yellow);
+  }
   a {
     @apply underline;
   }

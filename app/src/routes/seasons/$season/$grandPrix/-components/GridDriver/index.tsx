@@ -26,7 +26,9 @@ export default function GridDriver({
       >
         <h3 className="text-center text-black">{position || '-'}</h3>
       </div>
-      <h5 data-testid="grid-driver-name">{clearSlug(driverName)}</h5>
+      <h5 data-testid="grid-driver-name" className="text-white">
+        {clearSlug(driverName)}
+      </h5>
       <div className="col-start-2 row-start-2 flex items-center gap-2">
         <span
           data-testid="grid-driver-number"

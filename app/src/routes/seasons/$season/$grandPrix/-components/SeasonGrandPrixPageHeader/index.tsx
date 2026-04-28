@@ -7,6 +7,7 @@ export default function SeasonGrandPrixPageHeader({
   date,
   round,
 }: SeasonGrandPrixPageHeaderProps) {
+  if (!circuitName || !date || !round) return null;
   return (
     <div className="flex flex-col md:flex-row justify-between items-center">
       <span

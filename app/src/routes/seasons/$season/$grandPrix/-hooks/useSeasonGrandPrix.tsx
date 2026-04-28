@@ -11,30 +11,19 @@ export default function useSeasonGrandPrix({
     year: Number(season),
   });
 
-  if (isLoading)
-    return {
-      race: null,
-      tableData: null,
-    };
-
   const race = races.find((race) => race.grandPrixId === grandPrix);
 
-  if (!race) {
+  if (!race && !isLoading) {
     throw new Error(`No grand prix of ${grandPrix} found for season ${season}`);
   }
 
-  const tableData: RaceDriverFullResult[] | undefined = useMemo(
-    () =>
-      race?.raceResults.map((res) => {
-        return {
-          raceResult: res,
-          fastestLap: race.fastestLaps?.find(
-            (fl) => fl.driverId === res.driverId
-          ),
-        };
-      }),
-    [race]
-  );
+  const tableData: RaceDriverFullResult[] = useMemo(() => {
+    if (!race) return [];
+    return race?.raceResults.map((res) => ({
+      raceResult: res,
+      fastestLap: race.fastestLaps?.find((fl) => fl.driverId === res.driverId),
+    }));
+  }, [race]);
 
   return { race, tableData };
 }

@@ -5,7 +5,7 @@ import type RaceFilter from '~/types/request/RaceFilter';
 export default function useRaces(filter?: RaceFilter) {
   const { data = [], isLoading } = useQuery({
     queryKey: ['races', filter],
-    queryFn: () => getRaces(filter),
+    queryFn: async () => getRaces(filter),
   });
 
   return { races: data, isLoading };

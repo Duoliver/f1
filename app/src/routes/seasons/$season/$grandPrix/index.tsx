@@ -17,20 +17,18 @@ function SeasonGrandPrixPage() {
     grandPrix,
   });
 
-  if (!race || !tableData) return null;
-
   return (
-    <PageLayout title={race.officialName}>
+    <PageLayout title={race?.officialName || ''}>
       <main className="flex flex-col gap-16 w-full">
         <SeasonGrandPrixPageHeader
-          round={race.round}
-          circuitName={race.circuitId}
-          date={race.date}
+          round={race?.round}
+          circuitName={race?.circuitId}
+          date={race?.date}
         />
         <div className="flex flex-col gap-4 w-full">
           <h2 className="uppercase text-center">
-            Race classification after {race.laps}{' '}
-            {race.laps === 1 ? 'lap' : 'laps'}
+            Race classification after {race?.laps}{' '}
+            {race?.laps === 1 ? 'lap' : 'laps'}
           </h2>
           <Table<RaceDriverFullResult> columns={columns} data={tableData} />
         </div>

@@ -17,7 +17,7 @@ export default function Table<T>({ columns, data }: TableProps<T>) {
 
   return (
     <table className="border-spacing-y-4 border-separate">
-      <thead>
+      <thead className="hidden md:table-header-group">
         {table.getHeaderGroups().map((hg) => (
           <tr key={hg.id}>
             {hg.headers.map((header) => (
@@ -36,11 +36,16 @@ export default function Table<T>({ columns, data }: TableProps<T>) {
           </tr>
         ))}
       </thead>
-      <tbody>
+      <tbody className="flex flex-col gap-4 md:table-row-group">
         {table.getRowModel().rows.map((row) => (
-          <tr key={row.id}>
+          <tr className="flex flex-col md:table-row" key={row.id}>
             {row.getVisibleCells().map((cell) => (
               <td key={cell.id} className={getCellClass<T>(cell)}>
+                {cell.column.columnDef.header && (
+                  <span className="md:hidden text-start text-white">
+                    {cell.column.columnDef.header.toString()}
+                  </span>
+                )}
                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
               </td>
             ))}

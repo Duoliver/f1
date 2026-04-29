@@ -22,7 +22,10 @@ export default function GridDriver(gridDriverProps: GridDriverProps) {
     <GridDriverContext.Provider value={gridDriverProps}>
       <div
         data-testid="grid-driver"
-        className="grid grid-cols-[3.75rem_minmax(0,1fr)] sm:grid-rows-2 gap-2 min-[350px]:gap-x-2 min-[350px]:gap-y-0 text-start w-full mb-2 sm:mb-0"
+        className="grid grid-cols-[3.75rem_minmax(0,1fr)]
+          gap-2 text-start w-full mb-2
+          sm:grid-rows-2
+          min-[350px]:gap-x-2 min-[350px]:gap-y-0 md:mb-0"
       >
         <GridDriverPosition />
         <GridDriverName />

@@ -5,6 +5,7 @@ import SeasonGrandPrixPageHeader from './-components/SeasonGrandPrixPageHeader';
 import type RaceDriverFullResult from '~/types/page/seasons/$season/$grandPrix/RaceDriverFullResult';
 import useSeasonGrandPrix from './-hooks/useSeasonGrandPrix';
 import columns from './-columns';
+import Tabs from '~/components/Tabs';
 
 export const Route = createFileRoute('/seasons/$season/$grandPrix/')({
   component: SeasonGrandPrixPage,
@@ -25,13 +26,33 @@ function SeasonGrandPrixPage() {
           circuitName={race?.circuitId}
           date={race?.date}
         />
-        <div className="flex flex-col gap-4 w-full">
-          <h2 className="uppercase text-center">
-            Race classification after {race?.laps}{' '}
-            {race?.laps === 1 ? 'lap' : 'laps'}
-          </h2>
-          <Table<RaceDriverFullResult> columns={columns} data={tableData} />
-        </div>
+        <Tabs
+          tabs={[
+            {
+              title: 'Starting Grid',
+              content: (
+                <div className="flex flex-col gap-4 w-full">
+                  <h2 className="uppercase text-center">Starting Grid</h2>
+                </div>
+              ),
+            },
+            {
+              title: 'Race Results',
+              content: (
+                <div className="flex flex-col gap-4 w-full">
+                  <h2 className="uppercase text-center">
+                    Race classification after {race?.laps}{' '}
+                    {race?.laps === 1 ? 'lap' : 'laps'}
+                  </h2>
+                  <Table<RaceDriverFullResult>
+                    columns={columns}
+                    data={tableData}
+                  />
+                </div>
+              ),
+            },
+          ]}
+        />
       </main>
     </PageLayout>
   );

@@ -1,3 +1,4 @@
+import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import racesMock from '~/mocks/races';
 import { renderWithFileRoutes, screen } from '~/test-utils';
@@ -9,11 +10,17 @@ vi.mock(import('~/api/services/races'), () => {
   };
 });
 
-beforeEach(() =>
+beforeEach(async () => {
   renderWithFileRoutes({
     initialLocation: '/seasons/2002/great-britain',
-  })
-);
+  });
+
+  const tabHeadElement = await screen.findByRole('button', {
+    name: /race results/i,
+  });
+
+  await userEvent.click(tabHeadElement);
+});
 
 describe('SeasonGrandPrixPage (Race tab, scenario 2)', () => {
   it('should display the race results as "race classification after X lap" given X is equal to 1', async () => {

@@ -1,6 +1,6 @@
-import type DriverResult from '../common/DriverResult';
+import type ComparableDriverResult from '../common/ComparableDriverResult';
 
-export default interface RaceDriverResult extends DriverResult {
+export default interface RaceDriverResult extends ComparableDriverResult {
   laps: number | null;
   sharedCar: boolean;
   timePenalty: string | null;

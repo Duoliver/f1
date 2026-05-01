@@ -6,6 +6,7 @@ import raceResults, {
   thirdDriver,
 } from './raceDriverResults';
 import fastestLaps from './raceFastestLaps';
+import startingGridPositions from './raceStartingGrid';
 
 export const raceOne: Race = {
   year: 2002,
@@ -17,6 +18,7 @@ export const raceOne: Race = {
   qualifyingFormat: 'KNOCKOUT',
   laps: 45,
   qualifyingResults: [],
+  startingGridPositions,
   raceResults: [...raceResults, thirdDriver],
   fastestLaps,
 };
@@ -31,6 +33,7 @@ export const raceTwo: Race = {
   qualifyingFormat: 'KNOCKOUT',
   laps: 1,
   qualifyingResults: [],
+  startingGridPositions,
   raceResults: [...raceResults, retiredThirdDriver],
   fastestLaps: null,
 };
@@ -45,6 +48,7 @@ export const raceThree: Race = {
   qualifyingFormat: 'KNOCKOUT',
   laps: 50,
   qualifyingResults: [],
+  startingGridPositions,
   raceResults: [...raceResults, noGapOrReasonRetiredThirdDriver],
   fastestLaps,
 };
@@ -59,6 +63,7 @@ export const raceFour: Race = {
   qualifyingFormat: 'KNOCKOUT',
   laps: 60,
   qualifyingResults: [],
+  startingGridPositions,
   raceResults: [...raceResults, nonClassifiedDriver],
   fastestLaps,
 };

@@ -1,5 +1,5 @@
-import type DriverResult from '../common/DriverResult';
+import type ComparableDriverResult from '../common/ComparableDriverResult';
 
-export default interface RaceDriverFastestLap extends DriverResult {
+export default interface RaceDriverFastestLap extends ComparableDriverResult {
   lap: number;
 }

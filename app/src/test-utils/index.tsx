@@ -1,45 +1,19 @@
-import {
-  render as rtlRender,
-  type RenderOptions,
-} from '@testing-library/react';
-import { queryClientOptions } from '../api/react-query/queryClient';
+import { act, render as rtlRender } from '@testing-library/react';
+import { queryClientOptions } from '~/api/react-query/queryClient';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import {
   createMemoryHistory,
   createRouter,
   RouterProvider,
 } from '@tanstack/react-router';
-import { routeTree } from '../routeTree.gen';
-
-interface RenderWithFileRoutesOptions extends Omit<RenderOptions, 'wrapper'> {
-  initialLocation?: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  routerContext?: any;
-}
+import { routeTree } from '~/routeTree.gen';
+import type RenderWithFileRoutesOptions from './types';
 
 function generateQueryClient() {
   return new QueryClient(queryClientOptions);
 }
 
-export function createTestRouterFromFiles(
-  initialLocation = '/',
-  client?: QueryClient
-) {
-  const queryClient = client ?? generateQueryClient();
-  const router = createRouter({
-    routeTree,
-    history: createMemoryHistory({
-      initialEntries: [initialLocation],
-    }),
-    context: {
-      queryClient,
-    },
-  });
-
-  return router;
-}
-
-function renderWithFileRoutes({
+async function renderWithFileRoutes({
   initialLocation = '/',
   routerContext = {},
   ...renderOptions
@@ -54,21 +28,28 @@ function renderWithFileRoutes({
     },
   });
 
+  await router.load();
+
+  let result: ReturnType<typeof rtlRender>;
+
   const queryClient = routerContext?.queryClient ?? generateQueryClient();
 
-  function Wrapper() {
-    return (
-      <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router}></RouterProvider>
-      </QueryClientProvider>
-    );
-  }
+  await act(async () => {
+    function Wrapper() {
+      return (
+        <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router}></RouterProvider>
+        </QueryClientProvider>
+      );
+    }
 
-  return {
-    ...rtlRender(<div />, { wrapper: Wrapper, ...renderOptions }),
-    router,
-  };
+    result = rtlRender(null, { wrapper: Wrapper, ...renderOptions });
+  });
+
+  await act(() => Promise.resolve());
+
+  return { ...result!, router, queryClient };
 }
 
 export * from '@testing-library/react';
-export { renderWithFileRoutes as render };
+export { renderWithFileRoutes };

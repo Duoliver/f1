@@ -1,15 +1,16 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { render, screen } from '../../../../test-utils';
-import racesMock from '../../../../mocks/races';
+import { act, renderWithFileRoutes, screen } from '~/test-utils';
+import racesMock from '~/mocks/races';
+import userEvent from '@testing-library/user-event';
 
-vi.mock(import('../../../../api/services/races'), () => {
+vi.mock(import('~/api/services/races'), () => {
   return {
     default: racesMock,
   };
 });
 
 beforeEach(() =>
-  render({
+  renderWithFileRoutes({
     initialLocation: '/seasons/2002',
   })
 );
@@ -31,5 +32,14 @@ describe('SeasonPage', () => {
     expect(cardElement).toBeInTheDocument();
   });
 
-  // TODO test if it correctly goes to the race page when clicked. not implemented yet.
+  it('should take to the season grand prix page when clicked the grand prix card title', async () => {
+    const linkElement = await screen.findByRole('link', {
+      name: 'italy',
+    });
+    await userEvent.click(linkElement);
+
+    expect(await screen.findByTestId('pathname')).toHaveTextContent(
+      '/seasons/2002/italy'
+    );
+  });
 });

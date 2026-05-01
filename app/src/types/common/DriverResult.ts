@@ -1,6 +1,6 @@
 export default interface DriverResult {
   positionDisplayOrder: number;
-  positionNumber: number;
+  positionNumber: number | null;
   positionText: string;
   driverNumber: string;
   driverId: string;
@@ -9,9 +9,4 @@ export default interface DriverResult {
   tyreManufacturerId: string;
   time: string | null;
   timeMillis: number | null;
-  gap: string | null;
-  gapMillis: number | null;
-  interval: string | null;
-  intervalMillis: number | null;
-  laps: number;
 }

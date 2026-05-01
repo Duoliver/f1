@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
-import useSeasons from '../../api/hooks/useSeasons';
-import PageLayout from '../../layouts/PageLayout';
+import useSeasons from '~/api/hooks/useSeasons';
+import PageLayout from '~/layouts/PageLayout';
 import SeasonLink from './-components/SeasonLink';
 
 export const Route = createFileRoute('/seasons/')({

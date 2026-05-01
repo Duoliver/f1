@@ -1,5 +1,5 @@
-import type { FilterSortOrder } from '../../types/request/Filter';
-import type Filter from '../../types/request/Filter';
+import type { FilterSortOrder } from '~/types/request/Filter';
+import type Filter from '~/types/request/Filter';
 
 const BASE_API_URL = 'http://localhost:3000/';
 
@@ -23,8 +23,8 @@ function getQueryParams<T>(filter?: Filter<T> & Partial<T>): string {
   const { _sort, ...flatParams } = filter;
 
   if (_sort) {
-    const key = filter._sort.key;
-    const order = getSortOrder(filter._sort.order);
+    const key = _sort.key;
+    const order = getSortOrder(_sort.order);
     params.push(`_sort=${order}${key as string}`);
   }
 

@@ -1,26 +1,26 @@
-import cleanSlug from '../../../utils/cleanSlug';
-import formatDate from '../../../utils/formatDate';
-import type { RaceCardHeaderProps } from '../types';
+import clearSlug from '~/utils/clearSlug';
+import formatDate from '~/utils/formatDate';
+import useRaceCardContext from '../context/useRaceCardContext';
 
-export default function RaceCardHeader({
-  circuitName,
-  date,
-  grandPrixName,
-  round,
-}: RaceCardHeaderProps) {
+export default function RaceCardHeader() {
+  const { race, TitleWrapper = ({ children }) => children } =
+    useRaceCardContext();
+
   return (
     <header className="flex flex-col gap-2">
       <div className="flex justify-between">
-        <h6 data-testid="race-card-round">Round {round}</h6>
+        <h6 data-testid="race-card-round">Round {race.round}</h6>
         <p className="p-0 uppercase" data-testid="race-card-date">
-          {formatDate(date)}
+          {formatDate(race.date)}
         </p>
       </div>
-      <h3 className="text-yellow" data-testid="race-card-gp">
-        {cleanSlug(grandPrixName)}
-      </h3>
+      <TitleWrapper>
+        <h3 className="text-yellow" data-testid="race-card-gp">
+          {clearSlug(race.grandPrixId)}
+        </h3>
+      </TitleWrapper>
       <p className="p-0 uppercase" data-testid="race-card-circuit">
-        {cleanSlug(circuitName)}
+        {clearSlug(race.circuitId)}
       </p>
     </header>
   );

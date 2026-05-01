@@ -1,5 +1,7 @@
 import type QualifyingDriverResult from './QualifyingDriverResult';
+import type RaceDriverFastestLap from './RaceDriverFastestLap';
 import type RaceDriverResult from './RaceDriverResult';
+import type RaceDriverStartingGrid from './RaceDriverStartingGrid';
 
 export default interface Race {
   year: number;
@@ -7,6 +9,17 @@ export default interface Race {
   date: string;
   grandPrixId: string;
   circuitId: string;
+  officialName: string;
+  qualifyingFormat:
+    | 'ONE_SESSION'
+    | 'TWO_SESSION'
+    | 'ONE_LAP'
+    | 'KNOCKOUT'
+    | 'ELIMINATION'
+    | 'SPRINT_RACE';
+  laps: number;
   qualifyingResults: QualifyingDriverResult[];
+  startingGridPositions: RaceDriverStartingGrid[];
   raceResults: RaceDriverResult[];
+  fastestLaps: RaceDriverFastestLap[] | null;
 }

@@ -1,8 +1,9 @@
 import { describe, it, expect, vi } from 'vitest';
-import { act, render, screen } from '../../../test-utils';
+import { renderWithFileRoutes, screen } from '~/test-utils';
 import { beforeEach } from 'vitest';
+import userEvent from '@testing-library/user-event';
 
-vi.mock(import('../../../api/services/seasons/index.ts'), () => {
+vi.mock(import('~/api/services/seasons/index.ts'), () => {
   return {
     default: () => {
       return Promise.resolve([{ year: '2024' }, { year: '2023' }]);
@@ -11,7 +12,7 @@ vi.mock(import('../../../api/services/seasons/index.ts'), () => {
 });
 
 beforeEach(() => {
-  render({
+  renderWithFileRoutes({
     initialLocation: '/seasons',
   });
 });
@@ -24,9 +25,8 @@ describe('SeasonsPage', () => {
   });
 
   it("should navigate to the 2024 season page on clicking it's link", async () => {
-    await act(async () => {
-      (await screen.findByText('2024')).click();
-    });
+    const seasonLinkElement = await screen.findByText('2024');
+    await userEvent.click(seasonLinkElement);
 
     expect(await screen.findByTestId('pathname')).toHaveTextContent(
       '/seasons/2024'

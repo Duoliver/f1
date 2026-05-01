@@ -1,110 +1,26 @@
-import type Race from '../types/response/Race';
-import type RaceDriverResult from '../types/response/RaceDriverResult';
-
-const raceUnusedAttributes = {
-  positionDisplayOrder: 1,
-  positionText: '1',
-  sharedCar: false,
-  timeMillis: 5505015,
-  timePenalty: null,
-  timePenaltyMillis: null,
-  gapMillis: null,
-  gapLaps: null,
-  interval: null,
-  intervalMillis: null,
-  points: 10,
-  polePosition: false,
-  qualificationPositionNumber: 3,
-  qualificationPositionText: '3',
-  gridPositionNumber: 3,
-  gridPositionText: '3',
-  positionsGained: 2,
-  pitStops: 3,
-  fastestLap: false,
-  driverOfTheDay: null,
-  grandSlam: false,
-};
-
-const raceResults: RaceDriverResult[] = [
-  {
-    positionNumber: 1,
-    driverNumber: '1',
-    driverId: 'driver-one',
-    constructorId: 'ferrari',
-    engineManufacturerId: 'ferrari',
-    tyreManufacturerId: 'bridgestone',
-    laps: 60,
-    time: '1:30:00.000',
-    gap: null,
-
-    reasonRetired: null,
-    ...raceUnusedAttributes,
-  },
-  {
-    positionNumber: 2,
-    driverNumber: '2',
-    driverId: 'driver-two',
-    constructorId: 'ferrari',
-    engineManufacturerId: 'ferrari',
-    tyreManufacturerId: 'bridgestone',
-    laps: 60,
-    time: '1:30:10.000',
-    gap: '+10.000',
-    reasonRetired: null,
-    ...raceUnusedAttributes,
-  },
-];
-
-const thirdDriver: RaceDriverResult = {
-  positionNumber: 3,
-  driverNumber: '6',
-  driverId: 'driver-three',
-  constructorId: 'williams',
-  engineManufacturerId: 'bmw',
-  tyreManufacturerId: 'michelin',
-  laps: 60,
-  time: '1:30:20.000',
-  gap: '+20.000',
-  reasonRetired: null,
-  ...raceUnusedAttributes,
-};
-
-const retiredThirdDriver: RaceDriverResult = {
-  positionNumber: 3,
-  driverNumber: '6',
-  driverId: 'driver-three',
-  constructorId: 'williams',
-  engineManufacturerId: 'bmw',
-  tyreManufacturerId: 'michelin',
-  laps: 59,
-  time: null,
-  gap: null,
-  reasonRetired: 'Out of fuel',
-  ...raceUnusedAttributes,
-};
-
-const noGapOrReasonRetiredThirdDriver: RaceDriverResult = {
-  positionNumber: 3,
-  driverNumber: '6',
-  driverId: 'driver-three',
-  constructorId: 'williams',
-  engineManufacturerId: 'bmw',
-  tyreManufacturerId: 'michelin',
-  laps: 59,
-  time: null,
-  gap: null,
-  reasonRetired: null,
-  ...raceUnusedAttributes,
-};
+import type Race from '~/types/response/Race';
+import raceResults, {
+  noGapOrReasonRetiredThirdDriver,
+  nonClassifiedDriver,
+  retiredThirdDriver,
+  thirdDriver,
+} from './raceDriverResults';
+import fastestLaps from './raceFastestLaps';
+import startingGridPositions from './raceStartingGrid';
 
 export const raceOne: Race = {
   year: 2002,
   round: 1,
   date: '2002-04-06',
-  grandPrixId: 'italia',
+  grandPrixId: 'italy',
   circuitId: 'monza',
+  officialName: "Gran Premio Vodafone d'Italia 2002",
+  qualifyingFormat: 'KNOCKOUT',
+  laps: 45,
   qualifyingResults: [],
+  startingGridPositions,
   raceResults: [...raceResults, thirdDriver],
+  fastestLaps,
 };
 
 export const raceTwo: Race = {
@@ -113,8 +29,13 @@ export const raceTwo: Race = {
   date: '2002-04-30',
   grandPrixId: 'great-britain',
   circuitId: 'brands-hatch',
+  officialName: "2002 Foster's British Grand Prix",
+  qualifyingFormat: 'KNOCKOUT',
+  laps: 1,
   qualifyingResults: [],
+  startingGridPositions,
   raceResults: [...raceResults, retiredThirdDriver],
+  fastestLaps: null,
 };
 
 export const raceThree: Race = {
@@ -123,10 +44,31 @@ export const raceThree: Race = {
   date: '2002-05-21',
   grandPrixId: 'monaco',
   circuitId: 'monaco',
+  officialName: 'Grand Prix de Monaco 2002',
+  qualifyingFormat: 'KNOCKOUT',
+  laps: 50,
   qualifyingResults: [],
+  startingGridPositions,
   raceResults: [...raceResults, noGapOrReasonRetiredThirdDriver],
+  fastestLaps,
 };
 
-const racesMock = (): Promise<Race[]> => Promise.resolve([raceOne, raceTwo]);
+export const raceFour: Race = {
+  year: 2002,
+  round: 4,
+  date: '2002-05-29',
+  grandPrixId: 'san-marino',
+  circuitId: 'imola-clockwise',
+  officialName: 'Gran Premio di San Marino 2002',
+  qualifyingFormat: 'KNOCKOUT',
+  laps: 60,
+  qualifyingResults: [],
+  startingGridPositions,
+  raceResults: [...raceResults, nonClassifiedDriver],
+  fastestLaps,
+};
+
+const racesMock = (): Promise<Race[]> =>
+  Promise.resolve([raceOne, raceTwo, raceThree, raceFour]);
 
 export default racesMock;

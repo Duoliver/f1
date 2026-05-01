@@ -1,9 +1,9 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen } from '~/test-utils';
 import { describe, expect, it } from 'vitest';
 import RaceCard from '.';
-import { raceTwo, raceOne, raceThree } from '../../mocks/races';
+import { raceTwo, raceOne, raceThree } from '~/mocks/races';
 
-describe.only('RaceCard', () => {
+describe('RaceCard', () => {
   it('should display the correct race round of race 1', () => {
     render(<RaceCard race={raceOne} />);
 
@@ -41,7 +41,7 @@ describe.only('RaceCard', () => {
 
     const gpElement = screen.getByTestId('race-card-gp');
 
-    expect(gpElement).toHaveTextContent(/italia/i);
+    expect(gpElement).toHaveTextContent(/italy/i);
   });
 
   it('should display the compound noun grand prix name correctly', () => {

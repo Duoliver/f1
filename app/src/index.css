@@ -25,7 +25,12 @@
   --color-white: white;
   --color-yellow: #cfd128;
   --color-cyan: #2ad3ce;
-  --color-black: #1a1a1a;
+  --color-purple: #af5eff;
+  --color-black: #0f0f0f;
+  --color-tyre-red: #b60000;
+  --color-tyre-yellow: #f8b800;
+  --color-tyre-blue: #210b9e;
+  --color-full-black: black;
   --color-backdrop: rgba(0, 0, 0, 0.5);
 }
 
@@ -75,7 +80,7 @@
   .h5 {
     font-size: var(--text-2xl);
     font-family: var(--font-bold);
-    line-height: var(--text-2xl);
+    line-height: var(--text-3xl);
   }
   h4,
   .h4 {
@@ -103,7 +108,20 @@
     line-height: var(--text-6xl);
     color: var(--color-yellow);
   }
+  th {
+    font-size: var(--text-2xl);
+  }
+  td {
+    font-size: var(--text-2xl);
+    color: var(--color-yellow);
+  }
   a {
     @apply underline;
+  }
+
+  @media screen and (max-width: 639px) {
+    html {
+      font-size: 12px;
+    }
   }
 }

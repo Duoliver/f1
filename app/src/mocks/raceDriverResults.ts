@@ -1,0 +1,117 @@
+import type RaceDriverResult from '~/types/response/RaceDriverResult';
+
+const raceDriverResultUnusedAttributes = {
+  positionDisplayOrder: 1,
+  positionText: '1',
+  sharedCar: false,
+  timeMillis: 5505015,
+  timePenalty: null,
+  timePenaltyMillis: null,
+  gapMillis: null,
+  gapLaps: null,
+  interval: null,
+  intervalMillis: null,
+  points: 10,
+  polePosition: false,
+  qualificationPositionNumber: 3,
+  qualificationPositionText: '3',
+  gridPositionNumber: 3,
+  gridPositionText: '3',
+  positionsGained: 2,
+  pitStops: 3,
+  driverOfTheDay: null,
+  grandSlam: false,
+};
+
+const raceResults: RaceDriverResult[] = [
+  {
+    positionNumber: 1,
+    driverNumber: '1',
+    driverId: 'driver-one',
+    constructorId: 'ferrari',
+    engineManufacturerId: 'ferrari',
+    tyreManufacturerId: 'bridgestone',
+    laps: 60,
+    time: '1:30:00.000',
+    gap: null,
+    fastestLap: true,
+    reasonRetired: null,
+    ...raceDriverResultUnusedAttributes,
+  },
+  {
+    positionNumber: 2,
+    driverNumber: '2',
+    driverId: 'driver-two',
+    constructorId: 'ferrari',
+    engineManufacturerId: 'ferrari',
+    tyreManufacturerId: 'bridgestone',
+    laps: 60,
+    time: '1:30:10.000',
+    gap: '+10.000',
+    reasonRetired: null,
+    fastestLap: false,
+    ...raceDriverResultUnusedAttributes,
+  },
+];
+
+export default raceResults;
+
+export const thirdDriver: RaceDriverResult = {
+  positionNumber: 3,
+  driverNumber: '6',
+  driverId: 'driver-three',
+  constructorId: 'williams',
+  engineManufacturerId: 'bmw',
+  tyreManufacturerId: 'michelin',
+  laps: 60,
+  time: '1:30:20.000',
+  gap: '+20.000',
+  reasonRetired: null,
+  fastestLap: false,
+  ...raceDriverResultUnusedAttributes,
+};
+
+export const retiredThirdDriver: RaceDriverResult = {
+  positionNumber: 3,
+  driverNumber: '6',
+  driverId: 'driver-three',
+  constructorId: 'williams',
+  engineManufacturerId: 'bmw',
+  tyreManufacturerId: 'michelin',
+  laps: 59,
+  time: null,
+  gap: null,
+  reasonRetired: 'Out of fuel',
+  fastestLap: false,
+  ...raceDriverResultUnusedAttributes,
+};
+
+export const noGapOrReasonRetiredThirdDriver: RaceDriverResult = {
+  positionNumber: 3,
+  driverNumber: '6',
+  driverId: 'driver-three',
+  constructorId: 'williams',
+  engineManufacturerId: 'bmw',
+  tyreManufacturerId: 'michelin',
+  laps: 59,
+  time: null,
+  gap: null,
+  reasonRetired: null,
+  fastestLap: false,
+  ...raceDriverResultUnusedAttributes,
+};
+
+export const nonClassifiedDriver: RaceDriverResult = {
+  positionNumber: null,
+  driverNumber: '22',
+  driverId: 'driver-four',
+  constructorId: 'bad',
+  engineManufacturerId: 'worst',
+  tyreManufacturerId: 'pirelli',
+  laps: null,
+  time: null,
+  gap: null,
+  reasonRetired: 'Brakes',
+  fastestLap: false,
+  ...raceDriverResultUnusedAttributes,
+};

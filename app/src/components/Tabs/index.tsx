@@ -6,20 +6,30 @@ export default function Tabs({ tabs }: TabsProps) {
 
   return (
     <div data-testid="tabs">
-      <menu>
+      <menu className="flex flex-row border-b border-yellow mb-8">
         {tabs.map((tab, index) => (
           <button
             data-testid="tabs-tab-head"
-            key={`tabs-tab-head-${tab.title}`}
+            className={generateTabHeadClass(activeTab === index)}
+            key={`tabs-tab-head-${index}`}
             onClick={() => setActiveTab(index)}
           >
             {tab.title}
           </button>
         ))}
       </menu>
-      <Fragment key={`tabs-tab-content-${tabs[activeTab].title}`}>
+      <Fragment key={`tabs-tab-content-${activeTab}`}>
         {tabs[activeTab].content}
       </Fragment>
     </div>
   );
 }
+
+function generateTabHeadClass(isActive: boolean) {
+  if (isActive) {
+    return `${baseTabHeadClass} bg-yellow text-black`;
+  }
+  return `${baseTabHeadClass} cursor-pointer`;
+}
+
+const baseTabHeadClass = 'flex-1 p-2 rounded-t-2xl';

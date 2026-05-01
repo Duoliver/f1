@@ -17,7 +17,7 @@ export default function useSeasonGrandPrix({
     throw new Error(`No grand prix of ${grandPrix} found for season ${season}`);
   }
 
-  const tableData: RaceDriverFullResult[] = useMemo(() => {
+  const raceResults: RaceDriverFullResult[] = useMemo(() => {
     if (!race) return [];
     return race?.raceResults.map((res) => ({
       raceResult: res,
@@ -25,5 +25,5 @@ export default function useSeasonGrandPrix({
     }));
   }, [race]);
 
-  return { race, tableData };
+  return { race, raceResults };
 }

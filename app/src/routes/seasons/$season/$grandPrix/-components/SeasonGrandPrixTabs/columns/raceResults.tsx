@@ -1,10 +1,10 @@
 import { createColumnHelper, type CellContext } from '@tanstack/react-table';
-import GridDriver from '../-components/GridDriver';
+import GridDriver from '../../GridDriver';
 import type RaceDriverFullResult from '~/types/page/seasons/$season/$grandPrix/RaceDriverFullResult';
 
 const columnHelper = createColumnHelper<RaceDriverFullResult>();
 
-const seasonGrandPrixColumns = [
+const raceResultColumns = [
   columnHelper.accessor('raceResult.positionNumber', {
     header: '',
     cell: ({
@@ -66,4 +66,4 @@ const seasonGrandPrixColumns = [
   }),
 ];
 
-export default seasonGrandPrixColumns;
+export default raceResultColumns;

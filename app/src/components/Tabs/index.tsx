@@ -32,4 +32,4 @@ function generateTabHeadClass(isActive: boolean) {
   return `${baseTabHeadClass} cursor-pointer`;
 }
 
-const baseTabHeadClass = 'flex-1 p-2 rounded-t-2xl';
+const baseTabHeadClass = 'flex-1 p-2';

@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { act, renderWithFileRoutes, screen } from '~/test-utils';
+import { renderWithFileRoutes, screen } from '~/test-utils';
 import racesMock from '~/mocks/races';
 import userEvent from '@testing-library/user-event';
 
@@ -41,5 +41,20 @@ describe('SeasonPage', () => {
     expect(await screen.findByTestId('pathname')).toHaveTextContent(
       '/seasons/2002/italy'
     );
+  });
+
+  it('should not have an upcoming race event as clickable', async () => {
+    const titleElement = await screen.findByRole('heading', {
+      name: 'malaysia',
+    });
+
+    const linkElement = screen.queryByRole('link', {
+      name: 'malaysia',
+    });
+
+    await userEvent.click(titleElement);
+
+    expect(linkElement).not.toBeInTheDocument();
+    expect(screen.getByTestId('pathname')).toHaveTextContent('/seasons/2002');
   });
 });

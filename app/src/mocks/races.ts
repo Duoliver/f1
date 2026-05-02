@@ -84,6 +84,6 @@ export const raceFive: Race = {
 };
 
 const racesMock = (): Promise<Race[]> =>
-  Promise.resolve([raceOne, raceTwo, raceThree, raceFour]);
+  Promise.resolve([raceOne, raceTwo, raceThree, raceFour, raceFive]);
 
 export default racesMock;

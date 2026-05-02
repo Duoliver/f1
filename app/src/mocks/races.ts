@@ -68,6 +68,21 @@ export const raceFour: Race = {
   fastestLaps,
 };
 
+export const raceFive: Race = {
+  year: 2002,
+  round: 5,
+  date: '2002-06-05',
+  grandPrixId: 'malaysia',
+  circuitId: 'sepang',
+  officialName: 'Petronas Formula One Malaysia Grand Prix 2002',
+  qualifyingFormat: 'KNOCKOUT',
+  laps: 55,
+  qualifyingResults: null,
+  startingGridPositions: null,
+  raceResults: null,
+  fastestLaps: null,
+};
+
 const racesMock = (): Promise<Race[]> =>
   Promise.resolve([raceOne, raceTwo, raceThree, raceFour]);
 

@@ -1,5 +1,5 @@
 {
-  "$id": "https://www.f1db.com/schema/v6.2.0/single/f1db.schema.json",
+  "$id": "https://www.f1db.com/schema/v6.4.0/single/f1db.schema.json",
   "$schema": "http://json-schema.org/draft-07/schema",
   "title": "F1DB",
   "description": "F1DB JSON Schema",
@@ -202,6 +202,11 @@
           "minimum": 1,
           "description": "The best finishing position achieved by the driver in a race."
         },
+        "bestSprintRaceResult": {
+          "type": ["integer", "null"],
+          "minimum": 1,
+          "description": "The best finishing position achieved by the driver in a sprint race."
+        },
         "totalChampionshipWins": {
           "type": "integer",
           "minimum": 0,
@@ -254,6 +259,16 @@
           "minimum": 0,
           "description": "The total number of fastest laps set by the driver."
         },
+        "totalSprintRaceStarts": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "The total number of sprint races started by the driver."
+        },
+        "totalSprintRaceWins": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "The total number of sprint races won by the driver."
+        },
         "totalDriverOfTheDay": {
           "type": "integer",
           "minimum": 0,
@@ -284,6 +299,7 @@
         "bestChampionshipPosition",
         "bestStartingGridPosition",
         "bestRaceResult",
+        "bestSprintRaceResult",
         "totalChampionshipWins",
         "totalRaceEntries",
         "totalRaceStarts",
@@ -294,6 +310,8 @@
         "totalChampionshipPoints",
         "totalPolePositions",
         "totalFastestLaps",
+        "totalSprintRaceStarts",
+        "totalSprintRaceWins",
         "totalDriverOfTheDay",
         "totalGrandSlams"
       ]
@@ -364,6 +382,11 @@
           "minimum": 1,
           "description": "The best finishing position achieved by the constructor in a race."
         },
+        "bestSprintRaceResult": {
+          "type": ["integer", "null"],
+          "minimum": 1,
+          "description": "The best finishing position achieved by the constructor in a sprint race."
+        },
         "totalChampionshipWins": {
           "type": "integer",
           "minimum": 0,
@@ -425,6 +448,16 @@
           "type": "integer",
           "minimum": 0,
           "description": "The total number of fastest laps set by the constructor."
+        },
+        "totalSprintRaceStarts": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "The total number of sprint races started by the constructor."
+        },
+        "totalSprintRaceWins": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "The total number of sprint races won by the constructor."
         }
       },
       "required": [
@@ -436,6 +469,7 @@
         "bestChampionshipPosition",
         "bestStartingGridPosition",
         "bestRaceResult",
+        "bestSprintRaceResult",
         "totalChampionshipWins",
         "totalRaceEntries",
         "totalRaceStarts",
@@ -447,7 +481,9 @@
         "totalPoints",
         "totalChampionshipPoints",
         "totalPolePositions",
-        "totalFastestLaps"
+        "totalFastestLaps",
+        "totalSprintRaceStarts",
+        "totalSprintRaceWins"
       ]
     },
     "ConstructorChronology": {
@@ -538,6 +574,11 @@
           "minimum": 1,
           "description": "The best finishing position achieved by the engine manufacturer in a race."
         },
+        "bestSprintRaceResult": {
+          "type": ["integer", "null"],
+          "minimum": 1,
+          "description": "The best finishing position achieved by the engine manufacturer in a sprint race."
+        },
         "totalChampionshipWins": {
           "type": "integer",
           "minimum": 0,
@@ -594,6 +635,16 @@
           "type": "integer",
           "minimum": 0,
           "description": "The total number of fastest laps set by the engine manufacturer."
+        },
+        "totalSprintRaceStarts": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "The total number of sprint races started by the engine manufacturer."
+        },
+        "totalSprintRaceWins": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "The total number of sprint races won by the engine manufacturer."
         }
       },
       "required": [
@@ -603,6 +654,7 @@
         "bestChampionshipPosition",
         "bestStartingGridPosition",
         "bestRaceResult",
+        "bestSprintRaceResult",
         "totalChampionshipWins",
         "totalRaceEntries",
         "totalRaceStarts",
@@ -613,7 +665,9 @@
         "totalPoints",
         "totalChampionshipPoints",
         "totalPolePositions",
-        "totalFastestLaps"
+        "totalFastestLaps",
+        "totalSprintRaceStarts",
+        "totalSprintRaceWins"
       ]
     },
     "Engine": {
@@ -687,6 +741,11 @@
           "minimum": 1,
           "description": "The best finishing position achieved by the tyre manufacturer in a race."
         },
+        "bestSprintRaceResult": {
+          "type": ["integer", "null"],
+          "minimum": 1,
+          "description": "The best finishing position achieved by the tyre manufacturer in a sprint race."
+        },
         "totalRaceEntries": {
           "type": "integer",
           "minimum": 0,
@@ -726,6 +785,16 @@
           "type": "integer",
           "minimum": 0,
           "description": "The total number of fastest laps set by the tyre manufacturer."
+        },
+        "totalSprintRaceStarts": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "The total number of sprint races started by the tyre manufacturer."
+        },
+        "totalSprintRaceWins": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "The total number of sprint races won by the tyre manufacturer."
         }
       },
       "required": [
@@ -734,6 +803,7 @@
         "countryId",
         "bestStartingGridPosition",
         "bestRaceResult",
+        "bestSprintRaceResult",
         "totalRaceEntries",
         "totalRaceStarts",
         "totalRaceWins",
@@ -741,7 +811,9 @@
         "totalPodiums",
         "totalPodiumRaces",
         "totalPolePositions",
-        "totalFastestLaps"
+        "totalFastestLaps",
+        "totalSprintRaceStarts",
+        "totalSprintRaceWins"
       ]
     },
     "Entrant": {
@@ -791,7 +863,7 @@
         },
         "direction": {
           "$ref": "#/definitions/Direction",
-          "description": "The direction of the current or most recently used configuration of the circuit."
+          "description": "The direction of the current or most recently used layout of the circuit."
         },
         "placeName": {
           "type": "string",
@@ -816,12 +888,19 @@
         "length": {
           "type": "number",
           "minimum": 0,
-          "description": "The length of the current or most recently used configuration of the circuit in kilometers."
+          "description": "The length of the current or most recently used layout of the circuit in kilometers."
         },
         "turns": {
           "type": "integer",
           "minimum": 0,
-          "description": "The number of turns (corners) in the current or most recently used configuration of the circuit."
+          "description": "The number of turns (corners) in the current or most recently used layout of the circuit."
+        },
+        "layouts": {
+          "type": ["array", "null"],
+          "items": {
+            "$ref": "#/definitions/CircuitLayout"
+          },
+          "description": "The layouts of the circuit."
         },
         "totalRacesHeld": {
           "type": "integer",
@@ -842,7 +921,39 @@
         "longitude",
         "length",
         "turns",
+        "layouts",
         "totalRacesHeld"
+      ]
+    },
+    "CircuitLayout": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The unique identifier of the circuit layout."
+        },
+        "effective": {
+          "type": "boolean",
+          "default": "false",
+          "description": "Whether the layout is the current or most recently used layout."
+        },
+        "length": {
+          "type": "number",
+          "minimum": 0,
+          "description": "The length of the circuit layout in kilometers."
+        },
+        "turns": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "The number of turns (corners) in the circuit layout."
+        }
+      },
+      "required": [
+        "id",
+        "effective",
+        "length",
+        "turns"
       ]
     },
     "GrandPrix": {
@@ -1142,6 +1253,11 @@
           "minimum": 1,
           "description": "The best finishing position achieved by the constructor during the season."
         },
+        "bestSprintRaceResult": {
+          "type": ["integer", "null"],
+          "minimum": 1,
+          "description": "The best sprint race finishing position achieved by the constructor during the season."
+        },
         "totalRaceEntries": {
           "type": "integer",
           "minimum": 0,
@@ -1192,6 +1308,16 @@
           "type": "integer",
           "minimum": 0,
           "description": "The total number of fastest laps set by the constructor during the season."
+        },
+        "totalSprintRaceStarts": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "The total number of sprint races started by the constructor during the season."
+        },
+        "totalSprintRaceWins": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "The total number of sprint races won by the constructor during the season."
         }
       },
       "required": [
@@ -1201,6 +1327,7 @@
         "positionText",
         "bestStartingGridPosition",
         "bestRaceResult",
+        "bestSprintRaceResult",
         "totalRaceEntries",
         "totalRaceStarts",
         "totalRaceWins",
@@ -1210,7 +1337,9 @@
         "totalPodiumRaces",
         "totalPoints",
         "totalPolePositions",
-        "totalFastestLaps"
+        "totalFastestLaps",
+        "totalSprintRaceStarts",
+        "totalSprintRaceWins"
       ]
     },
     "SeasonEngineManufacturer": {
@@ -1244,6 +1373,11 @@
           "type": ["integer", "null"],
           "minimum": 1,
           "description": "The best finishing position achieved by the engine manufacturer during the season."
+        },
+        "bestSprintRaceResult": {
+          "type": ["integer", "null"],
+          "minimum": 1,
+          "description": "The best sprint race finishing position achieved by the engine manufacturer during the season."
         },
         "totalRaceEntries": {
           "type": "integer",
@@ -1290,6 +1424,16 @@
           "type": "integer",
           "minimum": 0,
           "description": "The total number of fastest laps set by the engine manufacturer during the season."
+        },
+        "totalSprintRaceStarts": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "The total number of sprint races started by the engine manufacturer during the season."
+        },
+        "totalSprintRaceWins": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "The total number of sprint races won by the engine manufacturer during the season."
         }
       },
       "required": [
@@ -1299,6 +1443,7 @@
         "positionText",
         "bestStartingGridPosition",
         "bestRaceResult",
+        "bestSprintRaceResult",
         "totalRaceEntries",
         "totalRaceStarts",
         "totalRaceWins",
@@ -1307,7 +1452,9 @@
         "totalPodiumRaces",
         "totalPoints",
         "totalPolePositions",
-        "totalFastestLaps"
+        "totalFastestLaps",
+        "totalSprintRaceStarts",
+        "totalSprintRaceWins"
       ]
     },
     "SeasonTyreManufacturer": {
@@ -1331,6 +1478,11 @@
           "type": ["integer", "null"],
           "minimum": 1,
           "description": "The best finishing position achieved by the tyre manufacturer during the season."
+        },
+        "bestSprintRaceResult": {
+          "type": ["integer", "null"],
+          "minimum": 1,
+          "description": "The best sprint race finishing position achieved by the tyre manufacturer during the season."
         },
         "totalRaceEntries": {
           "type": "integer",
@@ -1371,6 +1523,16 @@
           "type": "integer",
           "minimum": 0,
           "description": "The total number of fastest laps set by the tyre manufacturer during the season."
+        },
+        "totalSprintRaceStarts": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "The total number of sprint races started by the tyre manufacturer during the season."
+        },
+        "totalSprintRaceWins": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "The total number of sprint races won by the tyre manufacturer during the season."
         }
       },
       "required": [
@@ -1378,6 +1540,7 @@
         "tyreManufacturerId",
         "bestStartingGridPosition",
         "bestRaceResult",
+        "bestSprintRaceResult",
         "totalRaceEntries",
         "totalRaceStarts",
         "totalRaceWins",
@@ -1385,7 +1548,9 @@
         "totalPodiums",
         "totalPodiumRaces",
         "totalPolePositions",
-        "totalFastestLaps"
+        "totalFastestLaps",
+        "totalSprintRaceStarts",
+        "totalSprintRaceWins"
       ]
     },
     "SeasonDriver": {
@@ -1419,6 +1584,11 @@
           "type": ["integer", "null"],
           "minimum": 1,
           "description": "The best finishing position achieved by the driver during the season."
+        },
+        "bestSprintRaceResult": {
+          "type": ["integer", "null"],
+          "minimum": 1,
+          "description": "The best sprint race finishing position achieved by the driver during the season."
         },
         "totalRaceEntries": {
           "type": "integer",
@@ -1461,6 +1631,16 @@
           "minimum": 0,
           "description": "The total number of fastest laps set by the driver during the season."
         },
+        "totalSprintRaceStarts": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "The total number of sprint races started by the driver during the season."
+        },
+        "totalSprintRaceWins": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "The total number of sprint races won by the driver during the season."
+        },
         "totalDriverOfTheDay": {
           "type": "integer",
           "minimum": 0,
@@ -1479,6 +1659,7 @@
         "positionText",
         "bestStartingGridPosition",
         "bestRaceResult",
+        "bestSprintRaceResult",
         "totalRaceEntries",
         "totalRaceStarts",
         "totalRaceWins",
@@ -1487,6 +1668,8 @@
         "totalPoints",
         "totalPolePositions",
         "totalFastestLaps",
+        "totalSprintRaceStarts",
+        "totalSprintRaceWins",
         "totalDriverOfTheDay",
         "totalGrandSlams"
       ]
@@ -1519,6 +1702,11 @@
           "minimum": 0,
           "multipleOf": 0.01,
           "description": "The total number of points determining the driver's position in the standings."
+        },
+        "championshipWon": {
+          "type": "boolean",
+          "default": "false",
+          "description": "Whether the driver has won the World Drivers' Championship."
         }
       },
       "required": [
@@ -1526,7 +1714,8 @@
         "positionNumber",
         "positionText",
         "driverId",
-        "points"
+        "points",
+        "championshipWon"
       ]
     },
     "SeasonConstructorStanding": {
@@ -1561,6 +1750,11 @@
           "minimum": 0,
           "multipleOf": 0.01,
           "description": "The total number of points determining the constructor's position in the standings."
+        },
+        "championshipWon": {
+          "type": "boolean",
+          "default": "false",
+          "description": "Whether the constructor has won the World Constructors' Championship."
         }
       },
       "required": [
@@ -1569,7 +1763,8 @@
         "positionText",
         "constructorId",
         "engineManufacturerId",
-        "points"
+        "points",
+        "championshipWon"
       ]
     },
     "Race": {
@@ -1621,6 +1816,10 @@
           "type": "string",
           "description": "The identifier of the circuit where the race takes place."
         },
+        "circuitLayoutId": {
+          "type": "string",
+          "description": "The identifier of the circuit layout."
+        },
         "circuitType": {
           "$ref": "#/definitions/CircuitType",
           "description": "The type of the circuit."
@@ -1662,12 +1861,12 @@
         "driversChampionshipDecider": {
           "type": "boolean",
           "default": "false",
-          "description": "Whether this race was the decider of the World Drivers' Championship."
+          "description": "Whether the race was the decider of the World Drivers' Championship."
         },
         "constructorsChampionshipDecider": {
           "type": "boolean",
           "default": "false",
-          "description": "Whether this race was the decider of the World Constructors' Championship."
+          "description": "Whether the race was the decider of the World Constructors' Championship."
         },
         "preQualifyingDate": {
           "type": ["string", "null"],
@@ -1946,6 +2145,7 @@
         "qualifyingFormat",
         "sprintQualifyingFormat",
         "circuitId",
+        "circuitLayoutId",
         "circuitType",
         "direction",
         "courseLength",
@@ -2724,6 +2924,11 @@
         "positionsGained": {
           "type": ["integer", "null"],
           "description": "The positions gained in the standings since the previous race."
+        },
+        "championshipWon": {
+          "type": "boolean",
+          "default": "false",
+          "description": "Whether the driver has won the World Drivers' Championship."
         }
       },
       "required": [
@@ -2732,7 +2937,8 @@
         "positionText",
         "driverId",
         "points",
-        "positionsGained"
+        "positionsGained",
+        "championshipWon"
       ]
     },
     "RaceConstructorStanding": {
@@ -2771,6 +2977,11 @@
         "positionsGained": {
           "type": ["integer", "null"],
           "description": "The total number of points determining the constructor's position in the standings."
+        },
+        "championshipWon": {
+          "type": "boolean",
+          "default": "false",
+          "description": "Whether the constructor has won the World Constructors' Championship."
         }
       },
       "required": [
@@ -2780,7 +2991,8 @@
         "constructorId",
         "engineManufacturerId",
         "points",
-        "positionsGained"
+        "positionsGained",
+        "championshipWon"
       ]
     },
     "Continent": {

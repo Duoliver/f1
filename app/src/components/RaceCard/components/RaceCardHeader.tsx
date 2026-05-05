@@ -11,7 +11,7 @@ export default function RaceCardHeader() {
       <div className="flex justify-between">
         <h6 data-testid="race-card-round">Round {race.round}</h6>
         <p className="p-0 uppercase" data-testid="race-card-date">
-          {formatDate(race.date)}
+          {race.raceResults ? formatDate(race.date) : 'Upcoming event'}
         </p>
       </div>
       <TitleWrapper>

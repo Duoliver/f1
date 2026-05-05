@@ -13,15 +13,20 @@ export default function SeasonRaceCard(props: RaceCardAdapterProps) {
 function SeasonRaceCardTitleWrapper({ children }: RaceCardTitleWrapperProps) {
   const { race } = useRaceCardContext();
 
-  return (
-    <Link
-      to="/seasons/$season/$grandPrix"
-      params={{
-        grandPrix: race.grandPrixId || '',
-        season: String(race.year),
-      }}
-    >
-      {children}
-    </Link>
-  );
+  if (race.raceResults) {
+    return (
+      <Link
+        to="/seasons/$season/$grandPrix"
+        params={{
+          grandPrix: race.grandPrixId || '',
+          season: String(race.year),
+        }}
+        className="text-yellow"
+      >
+        {children}
+      </Link>
+    );
+  }
+
+  return <>{children}</>;
 }

@@ -1,7 +1,7 @@
 import { render, screen } from '~/test-utils';
 import { describe, expect, it } from 'vitest';
 import RaceCard from '.';
-import { raceTwo, raceOne, raceThree } from '~/mocks/races';
+import { raceTwo, raceOne, raceThree, raceFive } from '~/mocks/races';
 
 describe('RaceCard', () => {
   it('should display the correct race round of race 1', () => {
@@ -128,5 +128,38 @@ describe('RaceCard', () => {
     );
 
     expect(thirdDriverRaceTimeElement).toHaveTextContent(/-/i);
+  });
+
+  it('should render an upcoming race, which has no results', () => {
+    render(<RaceCard race={raceFive} />);
+
+    const firstDriverRaceTimeElement =
+      screen.queryByTestId(/race-card-driver-1/);
+    const secondDriverRaceTimeElement =
+      screen.queryByTestId(/race-card-driver-2/);
+    const thirdDriverRaceTimeElement =
+      screen.queryByTestId(/race-card-driver-3/);
+
+    expect(firstDriverRaceTimeElement).not.toBeInTheDocument();
+    expect(secondDriverRaceTimeElement).not.toBeInTheDocument();
+    expect(thirdDriverRaceTimeElement).not.toBeInTheDocument();
+  });
+
+  it('should display the race date in the card footer if it has not happened yet', () => {
+    render(<RaceCard race={raceFive} />);
+
+    const footerDateElement = screen.queryByRole('heading', {
+      level: 4,
+    });
+
+    expect(footerDateElement).toHaveTextContent(/5 june/i);
+  });
+
+  it('should display \"upcoming event\" in the header date field if it has not happened yet', () => {
+    render(<RaceCard race={raceFive} />);
+
+    const dateElement = screen.getByTestId('race-card-date');
+
+    expect(dateElement).toHaveTextContent(/upcoming event/i);
   });
 });

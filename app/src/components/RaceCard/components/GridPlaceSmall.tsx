@@ -4,7 +4,10 @@ import type { GridPlaceSmallProps } from '../types';
 
 export default function GridPlaceSmall({ driverResult }: GridPlaceSmallProps) {
   return (
-    <div className="flex gap-1">
+    <div
+      className="flex gap-1"
+      data-testid={`race-card-driver-${driverResult.positionNumber}`}
+    >
       <span className="flex items-center justify-center text-center aspect-square h-9 bg-yellow">
         <h5 className="text-black">{driverResult.positionNumber}</h5>
       </span>

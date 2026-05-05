@@ -1,7 +1,7 @@
-import GridPlaceSmall from './components/GridPlaceSmall';
 import RaceCardHeader from './components/RaceCardHeader';
 import type RaceCardProps from './types';
 import RaceCardContext from './context';
+import RaceCardFooter from './components/RaceCardFooter';
 
 export default function RaceCard({ race, TitleWrapper }: RaceCardProps) {
   return (
@@ -11,14 +11,7 @@ export default function RaceCard({ race, TitleWrapper }: RaceCardProps) {
         data-testid={`race-card-${race.round}`}
       >
         <RaceCardHeader />
-        <footer className="flex flex-col mt-12 gap-1">
-          {race.raceResults.slice(0, 3).map((driverResult) => (
-            <GridPlaceSmall
-              driverResult={driverResult}
-              key={`${race.grandPrixId}-${driverResult.positionNumber}`}
-            />
-          ))}
-        </footer>
+        <RaceCardFooter />
       </section>
     </RaceCardContext.Provider>
   );

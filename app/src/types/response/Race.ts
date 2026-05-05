@@ -18,8 +18,8 @@ export default interface Race {
     | 'ELIMINATION'
     | 'SPRINT_RACE';
   laps: number;
-  qualifyingResults: QualifyingDriverResult[];
-  startingGridPositions: RaceDriverStartingGrid[];
-  raceResults: RaceDriverResult[];
+  qualifyingResults: QualifyingDriverResult[] | null;
+  startingGridPositions: RaceDriverStartingGrid[] | null;
+  raceResults: RaceDriverResult[] | null;
   fastestLaps: RaceDriverFastestLap[] | null;
 }

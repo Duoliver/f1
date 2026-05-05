@@ -16,7 +16,7 @@ So far, the only dependency the API has is JSON-Server itself. If you already ha
 
 ``npm i``
 
-Once JSON-Server is installed, you need to run the bash file responsible for downloading the latest version of the F1DB JSON file. The file itself is quite large (the current version as of writing has whole 83,7 MB) and is updated in a grand prix basis, but the downloadable asset comes in a zip file. The bash file in question downloads the zip file and extract its contents to the api/db folder.
+Once JSON-Server is installed, you need to run the bash file responsible for downloading the latest version of the F1DB JSON file. The file itself is quite large (the current version as of writing has whole 83,7 MB) and is updated in a grand prix basis, but the downloadable asset comes in a zip file, which compresses its size. The bash file in question downloads the zip file and extract its contents to the api/db folder.
 
 ``./download-database.sh``
 
@@ -30,15 +30,21 @@ At the project root folder, navigate to the API directory.
 
 ``cd app``
 
-Install its dependencies by running
+Install its dependencies by running:
 
 ``npm i``
+
+Copy the .env.example file as a proper .env:
+
+``cp .env.example .env``
+
+And change its value if needed. The API runs on port 3000 by default. 
 
 At the ``app`` folder, execute the frontend server by running:
 
 ``npm run dev``
 
-You can also generate an optimised build by running
+You can also generate an optimised build by running:
 
 ``npm run build``
 

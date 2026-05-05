@@ -1,7 +1,7 @@
 import type { FilterSortOrder } from '~/types/request/Filter';
 import type Filter from '~/types/request/Filter';
 
-const BASE_API_URL = 'http://localhost:3000/';
+const BASE_API_URL = import.meta.env.VITE_BASE_API_URL;
 
 export default async function get<T>(
   resource: string,

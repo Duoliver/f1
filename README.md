@@ -38,9 +38,9 @@ Copy the .env.example file as a proper .env:
 
 ``cp .env.example .env``
 
-And change its value if needed. The API runs on port 3000 by default. 
+And change its value if needed. The API runs on port 3000 by default, so it should work out of the box. 
 
-At the ``app`` folder, execute the frontend server by running:
+Still at the ``app`` folder, execute the frontend server by running:
 
 ``npm run dev``
 

@@ -18,7 +18,7 @@ export default function useSeasonGrandPrix({
   }
 
   const raceResults: RaceDriverFullResult[] = useMemo(() => {
-    if (!race) return [];
+    if (!race || !race?.raceResults) return [];
     return race?.raceResults.map((res) => ({
       raceResult: res,
       fastestLap: race.fastestLaps?.find((fl) => fl.driverId === res.driverId),

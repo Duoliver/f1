@@ -8,5 +8,8 @@
   "main": "index.js",
   "scripts": {
     "server": "json-server --watch db/f1db.json"
+  },
+  "dependencies": {
+    "json-server": "^1.0.0-beta.15"
   }
 }

@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router';
 import useSeasons from '~/api/hooks/useSeasons';
 import PageLayout from '~/layouts/PageLayout';
-import SeasonLink from './-components/SeasonLink';
+import SeasonsDecadeSection from './-components/SeasonsDecadeSection';
 
 export const Route = createFileRoute('/seasons/')({
   component: SeasonsPage,
@@ -18,15 +18,10 @@ export default function SeasonsPage() {
     <PageLayout title="Formula One Seasons">
       <div className="flex flex-col gap-8">
         {Object.keys(seasonsGroupedByDecade).map((decade) => (
-          <div className="flex flex-col gap-4">
-            <h2 className="lowercase">{decade}</h2>
-            <div className="grid grid-cols-3 sm:grid-cols-5 gap-4">
-              {seasonsGroupedByDecade[decade]!.map(({ year }) => (
-                <SeasonLink year={year} key={year} />
-              ))}
-            </div>
-            <hr />
-          </div>
+          <SeasonsDecadeSection
+            decade={decade}
+            yearsList={seasonsGroupedByDecade[decade]!}
+          />
         ))}
       </div>
     </PageLayout>

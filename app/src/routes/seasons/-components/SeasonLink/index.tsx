@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router';
-import type { SeasonLinkProps } from './types';
+import type SeasonLinkProps from './types';
 
 export default function SeasonLink({ year }: SeasonLinkProps) {
   return (

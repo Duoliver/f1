@@ -2,7 +2,15 @@
 
 A ReactJS client for the [Open Source Formula 1 Database](https://github.com/f1db/f1db).
 
+It is a quite simple project for getting the grips with some Tanstack tools and applying Test-Driven Development practices. The interface is based on the international Formula One television broadcast graphics package used from 1994 to 2003.
+
 This repository is comprised of the frontend client and the backend server. Due to the fact that this project is focused on frontend development, the backend server is only a [JSON-Server](https://www.npmjs.com/package/json-server) instance which serves a JSON representation of F1DB.
+
+As it stands, the client currently displays every race result and starting grid of every race of every season. It has a main menu, which leads to the "Seasons" page, where a season can be pick and then loads the "Season" page, comprised of the schedule of that season. By clicking on a race card, which contains basic information of that grand prix, it opens the "Season Grand Prix" page, where both starting grid and final race results can be accessed.
+
+## Stack
+
+This React 19 client, built with Vite, uses some tools from Tanstack, being them Tanstack Router, Tanstack Query and Tanstack Table. Router manages the routing elements of the application, implemented through file-based routing; Query deals with server state management; and Table is the abstraction layer for developing and rendering tables more efficiently. Tailwind is used for styling purposes. Vitest and React Testing Library are used for unit and integration tests.
 
 ## Setup
 

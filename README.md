@@ -12,7 +12,7 @@ As it stands, the client currently displays every race result and starting grid 
 
 ## Stack
 
-This React 19 client, built with Vite, uses some tools from Tanstack, being them Tanstack Router, Tanstack Query and Tanstack Table. Router manages the routing elements of the application, implemented through file-based routing; Query deals with server state management; and Table is the abstraction layer for developing and rendering tables more efficiently. Tailwind is used for styling purposes. Vitest and React Testing Library are used for unit and integration tests.
+This React 19 client, built with [Vite](https://vite.dev), uses some tools from [Tanstack](tanstack.com/), being them [Tanstack Router](https://tanstack.com/router/latest), [Tanstack Query](https://tanstack.com/query/latest) and [Tanstack Table](https://tanstack.com/table/latest). **Router** manages the routing elements of the application, implemented through file-based routing; **Query** deals with server state management; and **Table** is the abstraction layer for developing and rendering tables more efficiently. [Tailwind](https://tailwindcss.com) is used for styling purposes. [Vitest](https://vitest.dev) and [React Testing Library](https://github.com/testing-library/react-testing-library) are used for unit and integration tests.
 
 ## Setup
 

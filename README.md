@@ -6,6 +6,8 @@ It is a quite simple project for getting the grips with some Tanstack tools and 
 
 This repository is comprised of the frontend client and the backend server. Due to the fact that this project is focused on frontend development, the backend server is only a [JSON-Server](https://www.npmjs.com/package/json-server) instance which serves a JSON representation of F1DB.
 
+## Use
+
 As it stands, the client currently displays every race result and starting grid of every race of every season. It has a main menu, which leads to the "Seasons" page, where a season can be pick and then loads the "Season" page, comprised of the schedule of that season. By clicking on a race card, which contains basic information of that grand prix, it opens the "Season Grand Prix" page, where both starting grid and final race results can be accessed.
 
 ## Stack

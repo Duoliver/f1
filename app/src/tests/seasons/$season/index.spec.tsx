@@ -2,6 +2,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { renderWithFileRoutes, screen } from '~/test-utils';
 import racesMock from '~/mocks/races';
 import userEvent from '@testing-library/user-event';
+import { getBreadcrumbsLink } from '~/test-utils/components/breadcrumbsUtils';
 
 vi.mock(import('~/api/services/races'), () => {
   return {
@@ -56,5 +57,21 @@ describe('SeasonPage', () => {
 
     expect(linkElement).not.toBeInTheDocument();
     expect(screen.getByTestId('pathname')).toHaveTextContent('/seasons/2002');
+  });
+
+  it('should navigate to the seasons page when clicking on its breadcrumbs link', async () => {
+    const link = getBreadcrumbsLink('Seasons');
+
+    await userEvent.click(link);
+
+    expect(await screen.findByTestId('pathname')).toHaveTextContent('/seasons');
+  });
+
+  it('should navigate to the home page when clicking on its breadcrumbs link', async () => {
+    const link = getBreadcrumbsLink('Home');
+
+    await userEvent.click(link);
+
+    expect(await screen.findByTestId('pathname')).toHaveTextContent('/');
   });
 });

@@ -2,6 +2,7 @@ import { describe, it, expect, vi } from 'vitest';
 import { renderWithFileRoutes, screen } from '~/test-utils';
 import { beforeEach } from 'vitest';
 import userEvent from '@testing-library/user-event';
+import { findBreadcrumbsLink } from '~/test-utils/components/breadcrumbsUtils';
 
 vi.mock(import('~/api/services/seasons/index.ts'), () => {
   return {
@@ -61,5 +62,14 @@ describe('SeasonsPage', () => {
 
     expect(season2024Element).toAppearBefore(sectionHeading);
     expect(season2002Element).toAppearAfter(sectionHeading);
+  });
+
+  it('should navigate to the home page when clicking on its breadcrumbs link', async () => {
+    // TODO: Investigate further why it is not rendering synchronously
+    const link = await findBreadcrumbsLink('Home');
+
+    await userEvent.click(link);
+
+    expect(await screen.findByTestId('pathname')).toHaveTextContent('/');
   });
 });

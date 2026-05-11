@@ -25,6 +25,7 @@ export default function SeasonsPage() {
           <SeasonsDecadeSection
             decade={decade}
             yearsList={seasonsGroupedByDecade[decade]!}
+            key={decade}
           />
         ))}
       </div>

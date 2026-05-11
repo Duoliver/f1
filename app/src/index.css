@@ -40,12 +40,12 @@
     margin: 0;
     padding: 0;
   }
-  #root {
-    height: 100dvh;
-    font-family: var(--font-semi), Futura, sans-serif;
+  html {
     background-color: var(--color-black);
+  }
+  #root {
+    font-family: var(--font-semi), Futura, sans-serif;
     color: var(--color-white);
-    overflow-y: scroll;
   }
   p,
   .p,

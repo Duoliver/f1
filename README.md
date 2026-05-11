@@ -22,7 +22,7 @@ On the project root folder, navigate to the API directory.
 
 ``cd api``
 
-So far, the only dependency the API has is JSON-Server itself. If you already have this dependency installed, you can use your already installed instance. You can also install JSON-Server for this project only by running:
+So far, the only dependency the API has is JSON-Server itself. If you already have this dependency installed, you can use your own installed instance. You can also install JSON-Server for this project only by running:
 
 ``npm i``
 

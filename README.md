@@ -4,7 +4,7 @@ A ReactJS client for the [Open Source Formula 1 Database](https://github.com/f1d
 
 It is a quite simple project for getting the grips with some Tanstack tools and applying Test-Driven Development practices on front-end applications. The UI is based on the international Formula One television broadcast graphics package used from 1994 to 2003, with some "poetic license" for improving some elements and turning others into interactive components.
 
-This repository is comprised of the frontend client and the backend server. Due to the fact that this project is focused on frontend development, the backend server is only a [JSON-Server](https://www.npmjs.com/package/json-server) instance which serves a JSON representation of F1DB.
+This repository is comprised of the frontend client and the backend server. Due to the fact that this project is focused on frontend development, the backend server is nothing more than a [JSON-Server](https://www.npmjs.com/package/json-server) instance which serves a JSON representation of F1DB.
 
 ## Usage
 

@@ -2,6 +2,7 @@ import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import racesMock from '~/mocks/races';
 import { renderWithFileRoutes, screen, within } from '~/test-utils';
+import { getBreadcrumbsLink } from '~/test-utils/components/breadcrumbsUtils';
 
 vi.mock(import('~/api/services/races'), () => {
   return {
@@ -86,5 +87,31 @@ describe('SeasonGrandPrixPage', () => {
     });
 
     expect(subHeading).toHaveTextContent(/starting grid/i);
+  });
+
+  it('should navigate to the season page when clicking on its breadcrumbs link', async () => {
+    const link = getBreadcrumbsLink('2002');
+
+    await userEvent.click(link);
+
+    expect(await screen.findByTestId('pathname')).toHaveTextContent(
+      '/seasons/2002'
+    );
+  });
+
+  it('should navigate to the seasons page when clicking on its breadcrumbs link', async () => {
+    const link = getBreadcrumbsLink('Seasons');
+
+    await userEvent.click(link);
+
+    expect(await screen.findByTestId('pathname')).toHaveTextContent('/seasons');
+  });
+
+  it('should navigate to the home page when clicking on its breadcrumbs link', async () => {
+    const link = getBreadcrumbsLink('Home');
+
+    await userEvent.click(link);
+
+    expect(await screen.findByTestId('pathname')).toHaveTextContent('/');
   });
 });

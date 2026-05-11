@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router';
 import PageLayout from '~/layouts/PageLayout';
 import useRaces from '~/api/hooks/useRaces';
 import SeasonRaceCard from './-components/SeasonRaceCard';
+import seasonLinkOptions from './-link';
 
 export const Route = createFileRoute('/seasons/$season/')({
   component: SeasonPage,
@@ -16,7 +17,7 @@ function SeasonPage() {
   const title = `${season} Formula One Season`;
 
   return (
-    <PageLayout title={title}>
+    <PageLayout title={title} breadcrumbLinks={seasonLinkOptions(season)}>
       <main className="flex flex-col gap-4 w-full">
         <h2 className="text-center">Calendar</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">

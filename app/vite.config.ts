@@ -33,5 +33,9 @@ export default defineConfig({
     watch: false,
     globals: true,
     exclude: ['**/node_modules/**', '**/dist/**', '**/__tests__/**'],
+    coverage: {
+      provider: 'v8',
+      enabled: true,
+    },
   },
 });

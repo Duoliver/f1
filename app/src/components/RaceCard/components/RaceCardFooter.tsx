@@ -14,7 +14,7 @@ export default function RaceCardFooter() {
         getPodiumFinishers(raceResults).map((driverResult) => (
           <GridPlaceSmall
             driverResult={driverResult}
-            key={`${grandPrixId}-${driverResult.positionNumber}`}
+            key={`${grandPrixId}-${driverResult.positionNumber}-${driverResult.driverId}`}
           />
         ))
       ) : (

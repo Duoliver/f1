@@ -1,7 +1,8 @@
 import { createFileRoute } from '@tanstack/react-router';
 import useSeasons from '~/api/hooks/useSeasons';
 import PageLayout from '~/layouts/PageLayout';
-import SeasonLink from './-components/SeasonLink';
+import SeasonsDecadeSection from './-components/SeasonsDecadeSection';
+import seasonsLinkOptions from './-link';
 
 export const Route = createFileRoute('/seasons/')({
   component: SeasonsPage,
@@ -10,13 +11,28 @@ export const Route = createFileRoute('/seasons/')({
 export default function SeasonsPage() {
   const { seasons } = useSeasons({ _sort: { key: 'year', order: 'DESC' } });
 
+  const seasonsGroupedByDecade = Object.groupBy(seasons, (season) =>
+    getDecadeFromYear(season.year)
+  );
+
   return (
-    <PageLayout title="Formula One Seasons">
-      <div className="grid grid-cols-1 sm:grid-cols-4 md:grid-cols-5 gap-4">
-        {seasons.map(({ year }) => (
-          <SeasonLink year={year} key={year} />
+    <PageLayout
+      title="Formula One Seasons"
+      breadcrumbLinks={seasonsLinkOptions}
+    >
+      <div className="flex flex-col gap-8">
+        {Object.keys(seasonsGroupedByDecade).map((decade) => (
+          <SeasonsDecadeSection
+            decade={decade}
+            yearsList={seasonsGroupedByDecade[decade]!}
+            key={decade}
+          />
         ))}
       </div>
     </PageLayout>
   );
+}
+
+function getDecadeFromYear(year: string) {
+  return `${String(year).substring(0, 3)}0s`;
 }

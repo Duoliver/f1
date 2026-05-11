@@ -2,11 +2,16 @@ import { describe, it, expect, vi } from 'vitest';
 import { renderWithFileRoutes, screen } from '~/test-utils';
 import { beforeEach } from 'vitest';
 import userEvent from '@testing-library/user-event';
+import { findBreadcrumbsLink } from '~/test-utils/components/breadcrumbsUtils';
 
 vi.mock(import('~/api/services/seasons/index.ts'), () => {
   return {
     default: () => {
-      return Promise.resolve([{ year: '2024' }, { year: '2023' }]);
+      return Promise.resolve([
+        { year: '2024' },
+        { year: '2023' },
+        { year: '2002' },
+      ]);
     },
   };
 });
@@ -31,5 +36,40 @@ describe('SeasonsPage', () => {
     expect(await screen.findByTestId('pathname')).toHaveTextContent(
       '/seasons/2024'
     );
+  });
+
+  it('should group 2020s seasons into their decade', async () => {
+    const sectionHeading = await screen.findByRole('heading', {
+      level: 2,
+      name: '2020s',
+    });
+
+    const season1Element = screen.getByRole('link', { name: '2024' });
+    const season2Element = screen.getByRole('link', { name: '2023' });
+
+    expect(season1Element).toAppearAfter(sectionHeading);
+    expect(season2Element).toAppearAfter(sectionHeading);
+  });
+
+  it('should group 2000s seasons into their decade and after 2020s', async () => {
+    const sectionHeading = await screen.findByRole('heading', {
+      level: 2,
+      name: '2000s',
+    });
+
+    const season2024Element = screen.getByRole('link', { name: '2024' });
+    const season2002Element = screen.getByRole('link', { name: '2002' });
+
+    expect(season2024Element).toAppearBefore(sectionHeading);
+    expect(season2002Element).toAppearAfter(sectionHeading);
+  });
+
+  it('should navigate to the home page when clicking on its breadcrumbs link', async () => {
+    // TODO: Investigate further why it is not rendering synchronously
+    const link = await findBreadcrumbsLink('Home');
+
+    await userEvent.click(link);
+
+    expect(await screen.findByTestId('pathname')).toHaveTextContent('/');
   });
 });

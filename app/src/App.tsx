@@ -6,6 +6,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 const router = createRouter({
   routeTree,
+  scrollRestoration: true,
 });
 
 declare module '@tanstack/react-router' {

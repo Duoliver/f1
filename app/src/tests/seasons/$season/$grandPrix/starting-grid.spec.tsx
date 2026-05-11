@@ -1,7 +1,10 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import racesMock from '~/mocks/races';
 import { renderWithFileRoutes, screen } from '~/test-utils';
-import { getRowColumns, getTableRows } from '~/utils/tableUtils';
+import {
+  getRowColumns,
+  getTableRows,
+} from '~/test-utils/components/tableUtils';
 
 vi.mock(import('~/api/services/races'), () => {
   return {

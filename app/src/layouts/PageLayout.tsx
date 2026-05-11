@@ -13,8 +13,8 @@ export default function PageLayout({
 
   return (
     <>
-      <Breadcrumbs links={breadcrumbLinks} />
       <div className="flex flex-col items-center gap-8 pb-8">
+        <Breadcrumbs links={breadcrumbLinks} />
         <h1 className="text-center">{title}</h1>
         {isFetching ? (
           <span className="text-center">Loading...</span>
